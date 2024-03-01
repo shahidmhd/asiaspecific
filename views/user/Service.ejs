@@ -2,30 +2,37 @@
 <div class="rs-breadcrumbs img4">
     <div class="container">
         <div class="breadcrumbs-inner">
-            <h1 class="page-title">
-                Business Planning
-                <span class="watermark">Services</span>
-            </h1>
-            <span class="sub-text">Excepteur sint occaecat cupidatat non proident, sunt in coulpa qui official<br> 
-            modeserunt mollit anim id est laborum 20 years experience.</span>
+            <% if (service) { %>
+                <h1 class="page-title">
+                    <%= service.Service_Name %>
+                    <span class="watermark">Services</span>
+                </h1>
+                <span class="sub-text"><%= service.Service_Description %></span>
+            <% } else { %>
+                <!-- Handle the case where service is undefined or null -->
+                <h1 class="page-title">Service Not Found</h1>
+            <% } %>
         </div>
     </div>
 </div>
 <!-- Breadcrumbs End -->
 
 <!-- Services Single Start -->
+
 <div class="rs-services-single pt-120 pb-120 md-pt-80 md-pb-80">
    <div class="container">
         <div class="row">
+            <% if (service) { %>
             <div class="col-lg-8 md-mb-50">
                 <div class="services-img mb-60">
-                    <img src="images/services/services-single/1.jpg" alt="">
+                    <img src="/uploads/<%= service.image %>" alt="">
+
                 </div>
                 <div class="services-title pb-24">
-                    <h2 class="title">We Ensure Best Service</h2>
+                    <h2 class="title"><%= service.Main_Heading %></h2>
                 </div>
                 <p class="desc-part pb-26">
-                   Cras enim urna, interdum nec porttitor vitae, sollicitudin eu eros. Praesent eget mollis nulla, non lacinia urna. Donec sit amet neque auctor, ornare dui rutrum, condimentum justo. Duis dictum, ex accumsan eleifend eleifend, ex justo aliquam nunc, in ultrices ante quam eget massa. Sed scelerisque, odio eu tempor pulvinar, magna tortor finibus lorem, ut mattis tellus nunc ut quam. Curabitur quis ornare leo. Suspendisse bibendum nibh non turpis vestibulum pellentesque.
+                    <%= service.About_Me%>
                 </p>
                 <ul class="check-lists check-modify1">                              
                     <li>Sed ut perspiciatis unde omnis iste natus error</li>
@@ -161,6 +168,7 @@
                 </div>
                 <!-- Testimonial Section End -->
             </div>
+             
             <div class="col-lg-4 pl-36 md-pl-15">
                 <ul class="services-list mb-50">
                     <li><a class="active" href="business-planning.html">Business Planning</a></li>
@@ -201,6 +209,7 @@
                     </div>
                 </div>
             </div>
+            <% } %>
         </div> 
    </div> 
 </div>

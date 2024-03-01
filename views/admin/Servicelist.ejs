@@ -1,0 +1,96 @@
+<div class="page-wrapper">
+
+    <!-- Page Content-->
+    <div class="page-content-tab">
+
+        <div class="container-fluid">
+            <!-- Page-Title -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+
+                        <h4 class="page-title">Basic Tables</h4>
+                    </div>
+                    <!--end page-title-box-->
+                </div>
+                <!--end col-->
+            </div>
+            <!-- end page title end breadcrumb -->
+
+
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Service Datas</h4>
+
+                        </div><!--end card-header-->
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Service_Name</th>
+                                            <th>Service_Desc</th>
+                                            <th>Main_Heading</th>
+                                            <th>Main_Desc</th>
+                                            <th class="text-end">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% if (services.length > 0) { %>
+                                            <% services.forEach(service => { %>
+                                                <tr>
+                                                    <td><img src="/uploads/<%= service.image %>" alt="" class="rounded-circle thumb-xs me-1"> <%= service.Service_Name %></td>
+                                                    <td><%= service.Service_Description.length > 5 ? service.Service_Description.slice(0, 10) + '...' : service.Service_Description %></td>
+
+                                                    <td><%= service.Main_Heading %></td>
+                                                    <td><%= service.About_Me.length > 5 ? service.About_Me.slice(0, 10) + '...' : service.About_Me %></td>
+                                                    <td class="text-end">
+                                                        <a href="#"><i class="las la-pen text-secondary font-16"></i></a>
+                                                        <a href="#"><i class="las la-trash-alt text-secondary font-16"></i></a>
+                                                    </td>
+                                                </tr>
+                                            <% }); %>
+                                        <% } else { %>
+                                            <tr>
+                                                <td colspan="5" class="text-center">No services available.</td>
+                                            </tr>
+                                        <% } %>
+                                    </tbody>
+                                    
+                                </table><!--end /table-->
+                            </div><!--end /tableresponsive-->
+                        </div><!--end card-body-->
+                    </div><!--end card-->
+                </div> <!-- end col -->
+
+
+            </div> <!-- end row -->
+
+
+
+
+
+
+        </div><!-- container -->
+
+        <!--Start Rightbar-->
+
+        <!--end Rightbar-->
+
+        <!--Start Footer-->
+        <!-- Footer Start -->
+        <footer class="footer text-center text-sm-start">
+            &copy;
+            <script>
+                document.write(new Date().getFullYear())
+            </script> Metrica <span class="text-muted d-none d-sm-inline-block float-end">Crafted with <i
+                    class="mdi mdi-heart text-danger"></i> by Mannatthemes</span>
+        </footer>
+        <!-- end Footer -->
+        <!--end footer-->
+    </div>
+    <!-- end page content -->
+</div>

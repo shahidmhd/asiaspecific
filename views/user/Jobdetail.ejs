@@ -1,0 +1,176 @@
+<!-- Breadcrumbs Start -->
+<div class="rs-breadcrumbs img2">
+    <div class="container">
+        <div class="breadcrumbs-inner">
+            <h1 class="page-title">
+                Careers Single
+                <span class="watermark">Careers</span>
+            </h1>
+            <span class="sub-text">Excepteur sint occaecat cupidatat non proident, sunt in coulpa qui official<br> 
+            modeserunt mollit anim id est laborum 20 years experience.</span>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumbs End -->
+
+<!-- Careers Single Section Start -->
+<div class="rs-careers-single pt-120 pb-100 md-pt-80 md-pb-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 pr-45 md-pr-15 md-mb-50">
+                <div class="career-inner-section">
+                    <div class="career-wrap">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="title-inner">
+                                    <div class="description">
+                                        <p><strong>Job Category:</strong> <%=jobs.category%><br><strong>Email:</strong><%=jobs.Email%></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="title-inner">
+                                    <div class="description">
+                                        <p><strong>Job Type:</strong> <%=jobs.jobType%><br><strong>Vacancy:</strong>  <%=jobs.vecancy%></p>  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="career-img">
+                        <img src="/images/appointment/1.jpg" alt="">
+                    </div>
+
+                    <p class="desc pt-35 pb-60"><%=jobs.description%></p>
+
+                    <h2 class="title pb-10">Required skills:</h2>
+
+                    <ul class="dots">
+                        <% jobs.selectedSkills.forEach(function(skill) { %>
+                            <li><%= skill %></li>
+                        <% }); %>
+                    </ul>
+                    <h2 class="title pt-30 pb-30">Educational Requirements:</h2>
+                    <ul class="dots">
+                        <% jobs.selectedEducations.forEach(function(skill) { %>
+                            <li><%= skill %></li>
+                        <% }); %>
+                    </ul>
+
+                    <h2 class="title pt-30 pb-25">Experience Requirements:</h2>
+                    <ul class="dots">
+                        <li><%=jobs.experience%></li>
+                    </ul>
+
+                    <h2 class="title pt-20 pb-20">Office Location:</h2>
+                    <ul class="dots">
+                        <li><%=jobs.location%></li>
+                    </ul>
+
+                    <h2 class="title pt-20 pb-20">Working Days</h2>
+                    <ul class="dots">
+                        <li><%=jobs.workingday%></li>
+                    </ul>
+
+                    <h2 class="title pt-20 pb-20">Employment Status</h2>
+                    <ul class="dots">
+                        <li><%=jobs.jobType%></li>
+                    </ul>
+
+                    <!-- <h2 class="title pt-20 pb-20">Salary:</h2>
+                    <ul class="dots">
+                        <li>Tk. 32000 – 60000 (Negotiable)</li>
+                    </ul> -->
+
+                    <!-- <h2 class="title pt-20 pb-20">Other Benefits:</h2>
+                    <ul class="dots">
+                        <li>Young Team</li>
+                        <li>Weekly 2 Holidays</li>
+                        <li>Free Lunch</li>
+                        <li>Performance Bonus</li>
+                        <li>Weekend: Saturday & Sunday</li>
+                        <li>Salary Review: Yearly</li>
+                        <li>Yearly 2 Festival Bonus.</li>
+                        <li>Lunch and Snacks will be provided from the office.</li>
+                        <li>Unlimited Tea.</li>
+                        <li>Annual Tour</li>
+                        <li>Other facilities as per company policy</li>
+                    </ul> -->
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="contact-wrap">
+                    <div class="title-inner">        		      		
+                        <h2 class="title">Apply for this position</h2>					        
+                    </div>
+                    <form id="contact-form" method="post" action="/submit-form" >
+                        <fieldset>
+                            <div class="row">
+                                <div class="col-lg-12 mb-25">
+                                    <input class="from-control" type="text" id="name" name="name" placeholder=" Full Name" required="">
+                                </div> 
+                                <div class="col-lg-12 mb-25">
+                                    <input class="from-control" type="text" id="age" name="age" placeholder=" age" required="">
+                                </div> 
+                                <div class="col-lg-12 mb-25">
+                                    <input class="from-control" type="email" id="email" name="email" placeholder="E-Mail" required="">
+                                </div>   
+                                <div class="col-lg-12 mb-25">
+                                    <input class="from-control" type="text" id="qualification" name="qualification" placeholder=" qualification" required="">
+                                </div> 
+                                <div class="col-lg-12 mb-25">
+                                    <input class="from-control" type="text" id="speed" name="speed" placeholder=" Typing Speed (WPM)" required="">
+                                </div> 
+                                <div class="col-lg-12 mb-25">
+                                    <select class="form-control" name="englishKnowledge" id="englishKnowledge">
+                                        <option selected disabled>Select English Knowledge</option>
+                                        <option value="High">High</option>
+                                        <option value="Medium">Medium</option>
+                                        <option value="Low">Low</option>
+                                    </select>
+                                </div> 
+                        
+                                <div class="col-lg-12 mb-25">
+                                    <select class="form-control" name="gender" id="gender">
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                    </select>
+                                </div> 
+                                <div class="col-lg-12 mb-25">
+                                    <input class="from-control" type="text" id="phone" name="phone" placeholder="Phone" required="">
+                                </div>
+                            </div>
+                            
+                            <input type="hidden" name="jobId" value="<%=jobs._id%>">
+                            <div class="btn-part">                                            
+                                <div class="form-group mb-0">
+                                    <input class="readon details submit2" type="submit" value="Submit Now">
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form> 
+                    <!-- <div id="form-messages"></div> -->
+                </div>
+                <div class="services-add mt-30">
+                    <div class="services-overlay"></div>
+                    <div class="address-wrap mb-20">
+                        <div class="icon-part mb-37">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <h2 class="title"><span>Have</span> any Questions? Call us Today!</h2>
+                        <div class="divider">
+                            <span class="divider-separator"></span>
+                        </div>
+                        <div class="contact">
+                            <a href="tel:123222-8888">(123) 222-8888</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Careers Single Section End -->
+
+</div> 
+<!-- Main content End -->

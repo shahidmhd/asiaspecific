@@ -1,0 +1,131 @@
+<div class="page-wrapper">
+    <!-- Page Content-->
+    <div class="page-content-tab">
+        <div class="container-fluid">
+            <!-- Page-Title -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+
+                        <h4 class="page-title">Add Countries</h4>
+                    </div><!--end page-title-box-->
+                </div><!--end col-->
+            </div>
+            <!-- end page title end breadcrumb -->
+            <div class="row">
+                <div class="col-12 col-lg-8 mx-auto">
+                    <div class="card">
+                        <div class="card-body">
+                            <form id="serviceForm" action="/admin/addcountries" method="POST">
+                                <div class="form-group row">
+                                    <div class="col-md-6 mb-3">
+                                        <input type="text" placeholder="Continent" name="continent" class="form-control">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <select class="form-select" id="countrySelect" name="countries[]" multiple>
+                                            <% countries.forEach(country => { %>
+                                                <option value="<%= country %>"><%= country %></option>
+                                            <% }); %>
+                                        </select>
+                                    </div>
+                                    <button type="button" id="addCountry">Add Country</button>
+                                    <div id="selectedCountries">Selected Countries: None</div>
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-de-primary btn-sm text-light px-4 mt-3 mb-0" type="submit">Save</button>
+                                    <button class="btn btn-de-danger btn-sm text-light px-4 mt-3 mb-0" type="button" id="cancelBtn">Cancel</button>
+                                </div>
+                            </form>
+                            
+                        </div> <!--end card-body-->
+                    </div><!--end card-->
+                </div> <!--end col-->
+            </div><!--end row-->
+
+        </div><!-- container -->
+
+        <!--Start Rightbar-->
+      
+        <!--end Rightbar-->
+
+        <!--Start Footer-->
+        <!-- Footer Start -->
+        <footer class="footer text-center text-sm-start">
+            &copy;
+            <script>
+                document.write(new Date().getFullYear())
+            </script> Metrica <span class="text-muted d-none d-sm-inline-block float-end">Crafted with <i
+                    class="mdi mdi-heart text-danger"></i> by Mannatthemes</span>
+        </footer>
+        <!-- end Footer -->
+        <!--end footer-->
+    </div>
+    <!-- end page content -->
+</div>
+<!-- end page-wrapper -->
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const countrySelect = document.getElementById('countrySelect');
+    const addCountryButton = document.getElementById('addCountry');
+    const selectedCountriesDiv = document.getElementById('selectedCountries');
+
+    // Array to store selected countries
+    const selectedCountries = [];
+console.log(selectedCountries,"SER");
+    // Event listener for the "Add Country" button
+    addCountryButton.addEventListener('click', function () {
+        const selectedOption = countrySelect.options[countrySelect.selectedIndex];
+        const selectedCountry = selectedOption.value;
+
+        if (selectedCountry && !selectedCountries.includes(selectedCountry)) {
+            // Add the selected country to the array
+            selectedCountries.push(selectedCountry);
+
+            // Update the displayed selected countries
+            updateSelectedCountries();
+        }
+    });
+
+    // Function to update the displayed selected countries
+    function updateSelectedCountries() {
+        selectedCountriesDiv.textContent = `Selected Countries: ${selectedCountries.join(', ') || 'None'}`;
+    }
+
+   // Form submission event listener
+const serviceForm = document.getElementById('serviceForm');
+serviceForm.addEventListener('submit', function (event) {
+    // Append the selected countries to a hidden input field before submission
+    const hiddenInput = document.createElement('input');
+    hiddenInput.type = 'hidden';
+    hiddenInput.name = 'selectedCountries';
+    hiddenInput.value = JSON.stringify(selectedCountries);
+    serviceForm.appendChild(hiddenInput);
+
+    // Log the data for debugging
+    console.log('Form Submitted:', {
+        continent: serviceForm.elements.continent.value,
+        selectedCountries: selectedCountries,
+    });
+});
+
+
+   
+    // Cancel button event listener
+    const cancelBtn = document.getElementById('cancelBtn');
+    cancelBtn.addEventListener('click', function () {
+        // Reset the form
+        serviceForm.reset();
+
+        // Clear the selected countries
+        selectedCountries = [];
+ 
+        // Update the displayed selected countries
+        updateSelectedCountries();
+    });
+});
+
+    
+</script>

@@ -1,18 +1,16 @@
-const express=require('express')
+const express=require('express');
+const { Renderhome, Renderservice, Renderjobs, Renderjobdetail, applyjob, Rendersuccess } = require('../controller/Usercontroller');
 const router = express.Router();
 
 
 
-router.get("/",(req,res)=>{
-    res.render('user/Home');
-});
+router.get("/",Renderhome);
 
 router.get("/about",(req,res)=>{
     res.render('user/About');
 });
-router.get("/service",(req,res)=>{
-    res.render('user/Service');
-});
+router.get("/service/:slug",Renderservice);
+
 router.get("/news",(req,res)=>{
     res.render('user/News');
 });
@@ -20,9 +18,8 @@ router.get("/news",(req,res)=>{
 router.get("/contact",(req,res)=>{
     res.render('user/Contact');
 });
-router.get("/jobs",(req,res)=>{
-    res.render('user/Job');
-});
-
-
+router.get("/jobs/:slug",Renderjobs);
+router.get("/jobdetail/:slug",Renderjobdetail);
+router.post("/submit-form",applyjob);
+router.get("/success",Rendersuccess);
 module.exports=router

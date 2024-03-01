@@ -1,0 +1,183 @@
+
+
+ <div class="page-wrapper">
+    <!-- Page Content-->
+    <div class="page-content-tab">
+        <div class="container-fluid">
+            <!-- Page-Title -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+                        <h4 class="page-title">Add Job</h4>
+                    </div><!--end page-title-box-->
+                </div><!--end col-->
+            </div>
+            <!-- end page title end breadcrumb -->
+            <div class="row">
+                <div class="col-12 col-lg-8 mx-auto">
+                    <div class="card">
+                        <div class="card-body">
+                            <form action="/admin/addjob" method="POST" id="jobForm">
+                                <div class="form-group row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="category">Job category</label>
+                                        <input type="text" placeholder="Job category" class="form-control" name="category" id="category">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="jobType">Job Type</label>
+                                        <select class="form-select" name="jobType" id="jobType">
+                                            <option selected disabled>Select Job Type</option>
+                                            <option value="full-time">Full Time</option>
+                                            <option value="part-time">Part Time</option>
+                                            <option value="work-from-home">Work from Home</option>
+                                            <option value="hybrid">Hybrid</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="Email">Email</label>
+                                        <input type="email" placeholder="Email" class="form-control" name="Email" id="Email">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="vecancy">Vacancy</label>
+                                        <input type="text" placeholder="Vacancy" class="form-control" name="vecancy" id="vecancy">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="location">Location</label>
+                                       
+                                            <select class="form-select" name="location">
+                                                <% countries.forEach(country => { %>
+                                                    <option value="<%= country %>"><%= country %></option>
+                                                <% }); %>
+                                            </select>
+                                       
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="experience">Experience</label>
+                                        <input type="text" placeholder="Experience" class="form-control" name="experience" id="experience">
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="workingday">Working Days</label>
+                                        <input type="text" placeholder="Working Days" class="form-control" name="workingday" id="workingday">
+                                    </div>
+                                </div>
+                               
+<div class="form-group row">
+    <div class="col-md-6 mb-3">
+        <label for="Skills">Skills</label>
+        <input type="text" placeholder="Skills" class="form-control" name="Skills" id="Skills">
+        <button type="button" id="addSkill">Add Skill</button>
+        <ul id="selectedSkillsList"></ul>
+    </div>
+    
+    <div class="col-md-6 mb-3">
+        <label for="education">Education</label>
+        <input type="text" placeholder="Education" class="form-control" name="education" id="education">
+        <button type="button" id="addEducation">Add Education</button>
+        <ul id="selectedEducationList"></ul>
+    </div>
+</div>
+                                <div class="form-group">
+                                    <label for="description">Description</label>
+                                    <textarea rows="5" placeholder="Description..." class="form-control" name="description" id="description"></textarea>
+                                    <button class="btn btn-de-primary btn-sm text-light px-4 mt-3 mb-0" type="submit">Save</button>
+                                    <button class="btn btn-de-danger btn-sm text-light px-4 mt-3 mb-0" type="button" id="cancelBtn">Cancel</button>
+                                </div>
+                            </form>
+                        </div> <!--end card-body-->
+                    </div><!--end card-->
+                </div> <!--end col-->
+            </div><!--end row-->
+        </div><!-- container -->
+        <!--Start Footer-->
+        <!-- Footer Start -->
+        <footer class="footer text-center text-sm-start">
+            &copy; <script>
+                document.write(new Date().getFullYear())
+            </script> Metrica <span class="text-muted d-none d-sm-inline-block float-end">Crafted with <i
+                    class="mdi mdi-heart text-danger"></i> by Mannatthemes</span>
+        </footer>
+        <!-- end Footer -->
+        <!--end footer-->
+    </div>
+    <!-- end page content -->
+</div>
+
+<!-- Add this code inside your existing script -->
+<!-- Add this code inside your existing script -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const jobForm = document.getElementById('jobForm');
+        const skillsInput = document.getElementById('Skills');
+        const addSkillButton = document.getElementById('addSkill');
+        const selectedSkillsList = document.getElementById('selectedSkillsList');
+        const educationInput = document.getElementById('education');
+        const addEducationButton = document.getElementById('addEducation'); // Corrected the button ID
+        const educationList = document.getElementById('selectedEducationList'); // Corrected the list ID
+        const selectedSkills = [];
+        const selectedEducations = []; // Corrected the array name
+        addSkillButton.addEventListener('click', function () {
+            const skillValue = skillsInput.value.trim();
+            if (skillValue) {
+                selectedSkills.push(skillValue);
+                updateSelectedSkills();
+            }
+        });
+
+        addEducationButton.addEventListener('click', function () {
+            const educationValue = educationInput.value.trim();
+            if (educationValue) {
+                selectedEducations.push(educationValue); // Corrected the array name
+                updateSelectedEducations(); // Corrected the function name
+            }
+        });
+
+        function updateSelectedSkills() {
+            const hiddenInput = document.createElement('input');
+            hiddenInput.type = 'hidden';
+            hiddenInput.name = 'selectedSkills';
+            hiddenInput.value = JSON.stringify(selectedSkills);
+
+            // Remove existing hidden input to avoid duplicates
+            const existingHiddenInput = jobForm.querySelector('input[name="selectedSkills"]');
+            if (existingHiddenInput) {
+                jobForm.removeChild(existingHiddenInput);
+            }
+
+            jobForm.appendChild(hiddenInput);
+
+            // Update the displayed selected skills
+            selectedSkillsList.innerHTML = selectedSkills.map(skill => `<li>${skill}</li>`).join('');
+        }
+
+        function updateSelectedEducations() {
+            const hiddenInput = document.createElement('input');
+            hiddenInput.type = 'hidden';
+            hiddenInput.name = 'selectedEducations'; // Corrected the name
+            hiddenInput.value = JSON.stringify(selectedEducations);
+
+            // Remove existing hidden input to avoid duplicates
+            const existingHiddenInput = jobForm.querySelector('input[name="selectedEducations"]'); // Corrected the name
+            if (existingHiddenInput) {
+                jobForm.removeChild(existingHiddenInput);
+            }
+
+            jobForm.appendChild(hiddenInput);
+
+            // Update the displayed selected education
+            educationList.innerHTML = selectedEducations.map(edu => `<li>${edu}</li>`).join('');
+        }
+
+        const cancelBtn = document.getElementById('cancelBtn');
+        cancelBtn.addEventListener('click', function () {
+            jobForm.reset();
+            selectedSkills.length = 0;
+            selectedEducations.length = 0; // Corrected the array name
+            updateSelectedSkills();
+            updateSelectedEducations(); // Corrected the function name
+        });
+    });
+</script>

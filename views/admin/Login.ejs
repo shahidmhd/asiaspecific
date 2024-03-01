@@ -1,0 +1,89 @@
+<!-- Log In page -->
+<div class="container-md">
+    <div class="row vh-100 d-flex justify-content-center">
+        <div class="col-12 align-self-center">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-4 mx-auto">
+                        <div class="card">
+                            <div class="card-body p-0 auth-header-box">
+                                <div class="text-center p-3">
+                                    <a href="index.html" class="logo logo-admin">
+                                        <img src="/assets/images/logo-sm.png" height="50" alt="logo" class="auth-logo">
+                                    </a>
+                                    <h4 class="mt-3 mb-1 fw-semibold text-white font-18">Let's Get Started Metrica</h4>
+                                    <p class="text-muted mb-0">Sign in to continue to Metrica.</p>
+                                </div>
+                            </div>
+                            <div class="card-body pt-0">
+                                <!-- Convert to a form -->
+                                <form class="my-4" action="/admin/login" method="POST" onsubmit="return validateForm()">
+                                    <div class="form-group mb-2">
+                                        <label class="form-label" for="username">Email</label>
+                                        <input type="text" class="form-control" id="username" name="email" placeholder="Enter email">
+                                        <div id="emailError" class="error-message" style="color: red;"></div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label" for="userpassword">Password</label>
+                                        <input type="password" class="form-control" name="password" id="userpassword" placeholder="Enter password">
+                                        <div id="passwordError" class="error-message" style="color: red;"></div>
+                                    </div>
+
+                                    <div class="form-group mb-0 row">
+                                        <div class="col-12">
+                                            <div class="d-grid mt-3">
+                                                <!-- Change the type to "submit" to trigger form submission -->
+                                                <button class="btn btn-primary" type="submit">Log In <i class="fas fa-sign-in-alt ms-1"></i></button>
+                                            </div>
+                                        </div><!--end col-->
+                                    </div> <!--end form-group-->
+                                </form><!--end form-->
+                                <% if (loginError) { %>
+                                    <div class="alert alert-danger mt-3" role="alert">
+                                        <%= loginError %>
+                                    </div>
+                                <% } %>
+                            </div><!--end card-body-->
+                        </div><!--end card-->
+                    </div><!--end col-->
+                </div><!--end row-->
+            </div><!--end card-body-->
+        </div><!--end col-->
+    </div><!--end row-->
+</div><!--end container-->
+
+<script>
+    function validateForm() {
+        // Reset error messages
+        document.getElementById('emailError').textContent = '';
+        document.getElementById('passwordError').textContent = '';
+
+        // Get input values
+        var email = document.getElementById('username').value;
+        var password = document.getElementById('userpassword').value;
+
+        // Email validation
+        if (!email.trim()) {
+            document.getElementById('emailError').textContent = 'Email is required.';
+            return false;
+        }
+
+        // Check email format using regex
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            document.getElementById('emailError').textContent = 'Invalid email format.';
+            return false;
+        }
+
+        // Password validation
+        if (password.length < 6) {
+            document.getElementById('passwordError').textContent = 'Password must be at least 6 characters long.';
+            return false;
+        }
+
+        // Form is valid, continue with submission
+        return true;
+    }
+</script>
+

@@ -1,0 +1,100 @@
+<div class="page-wrapper">
+    <!-- Page Content-->
+    <div class="page-content-tab">
+        <div class="container-fluid">
+            <!-- Page-Title -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+
+                        <h4 class="page-title">Add Service</h4>
+                    </div><!--end page-title-box-->
+                </div><!--end col-->
+            </div>
+            <!-- end page title end breadcrumb -->
+            <div class="row">
+                <div class="col-12 col-lg-8 mx-auto">
+                    <div class="card">
+                        <div class="card-body">
+                            <form id="serviceForm" action="/admin/addform" method="POST" enctype="multipart/form-data">
+                                <div class="form-group row">
+                                    <div class="col-md-6 mb-3">
+                                        <input type="text" placeholder="Service Name" class="form-control" name="Service_Name" id="Service_Name" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <input type="text" placeholder="Description" class="form-control" name="Service_Description" id="Service_Description" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-12 mb-3">
+                                        <input type="text" placeholder="Main Heading" class="form-control" name="Main_Heading" id="Main_Heading" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <textarea rows="5" placeholder="Description..." class="form-control mb-3" name="About_Me" required></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-12 mb-3">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4 class="card-title">File Upload</h4>
+                                            </div>
+                                            <div class="card-body">
+                                                <input type="file" name="fileInput" id="fileInput" class="form-control" accept="image/*" onchange="displaySelectedImage()">
+                                                <img id="selectedImage" src="#" alt="Selected Image" class="mt-3 mb-0" style="display: none; max-width: 100%; max-height: 200px;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-de-primary btn-sm text-light px-4 mt-3 mb-0" type="submit">Save</button>
+                                    <button class="btn btn-de-danger btn-sm text-light px-4 mt-3 mb-0" type="button" onclick="cancelForm()">Cancel</button>
+                                </div>
+                            </form>
+                        </div> <!--end card-body-->
+                    </div><!--end card-->
+                </div> <!--end col-->
+            </div><!--end row-->
+
+        </div><!-- container -->
+
+        <!--Start Rightbar-->
+      
+        <!--end Rightbar-->
+
+        <!--Start Footer-->
+        <!-- Footer Start -->
+        <footer class="footer text-center text-sm-start">
+            &copy;
+            <script>
+                document.write(new Date().getFullYear())
+            </script> Metrica <span class="text-muted d-none d-sm-inline-block float-end">Crafted with <i
+                    class="mdi mdi-heart text-danger"></i> by Mannatthemes</span>
+        </footer>
+        <!-- end Footer -->
+        <!--end footer-->
+    </div>
+    <!-- end page content -->
+</div>
+<!-- end page-wrapper -->
+
+
+<script>
+    function displaySelectedImage() {
+        var input = document.getElementById('fileInput');
+        var image = document.getElementById('selectedImage');
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                image.src = e.target.result;
+                image.style.display = 'block';
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    function cancelForm() {
+        document.getElementById('serviceForm').reset();
+        var image = document.getElementById('selectedImage');
+        image.src = '';
+        image.style.display = 'none';
+    }
+</script>

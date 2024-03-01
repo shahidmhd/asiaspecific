@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    
+<!-- Mirrored from mannatthemes.com/metrica/default/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Feb 2024 16:57:20 GMT -->
+<head>
+        
+
+        <meta charset="utf-8" />
+                <title>Metrica - Admin & Dashboard Template</title>
+                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+                <meta content="" name="author" />
+                <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+                <!-- App favicon -->
+                <link rel="shortcut icon" href="/assets/images/favicon.ico">
+
+       
+
+         <!-- App css -->
+         <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+         <link href="/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+         <link href="/assets/css/app.min.css" rel="stylesheet" type="text/css" />
+
+    </head>
+
+   
+       
+        <%if(locals.adminlogin){%>
+            <body id="body" class="auth-page" style="background-image: url('/assets/images/p-1.png'); background-size: cover; background-position: center center;"></body>
+         <%- body %>
+         <%}else{%>
+            <body id="body">
+            <%- include('partials/adminsidebar') %> 
+            <%- body %>
+         <%}%>
+        
+       
+         <!-- vendor js -->
+        
+         <script src="/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+         <script src="/assets/libs/simplebar/simplebar.min.js"></script>
+         <script src="/assets/libs/feather-icons/feather.min.js"></script>
+ 
+         <script src="/assets/libs/apexcharts/apexcharts.min.js"></script>
+         <script src="/assets/js/pages/analytics-index.init.js"></script>
+         <script src="/assets/libs/uppy/uppy.legacy.min.js"></script>
+    <script src="/assets/js/pages/file-upload.init.js"></script>
+         <!-- App js -->
+         <script src="/assets/js/app.js"></script>
+ 
+     </body>
+     <!--end body-->
+ 
+ <!-- Mirrored from mannatthemes.com/metrica/default/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Feb 2024 16:58:01 GMT -->
+ </html>

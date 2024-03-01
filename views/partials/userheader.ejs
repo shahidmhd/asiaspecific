@@ -46,8 +46,8 @@
                     <div class="col-cell header-logo">                                  
                         <div class="logo-area">
                             <a href="index-2.html">
-                                <img class="normal-logo" src="images/logo-dark.png" alt="logo">  
-                                <img class="sticky-logo" src="images/logo-dark.png" alt="logo">
+                                <img class="normal-logo" src="/images/logo-dark.png" alt="logo">  
+                                <img class="sticky-logo" src="/images/logo-dark.png" alt="logo">
                             </a>
                         </div>
                     </div>
@@ -61,48 +61,33 @@
                                         <li class="menu-item-has-children">
                                             <a href="/service">Services</a>
                                             <ul class="sub-menu">
-                                                <li class=" current-menu-item"><a class="active" href="/service">Services 1</a></li>
-                                                <li><a href="/service">Business Planning</a></li>
-                                                <li><a href="/service">Financial Advices</a></li>
-                                                <li><a href="/service">Business Analysis</a></li>
-                                                <li><a href="/service">Reports Analysis</a></li>
-                                                <li><a href="/service">Fintech Analysis</a></li>
-                                                <li><a href="/service">Project Reporting</a></li>
-                                                <!-- <li class="last-item menu-item-has-children">
-                                                    <a href="business-planning.html">Services Single <i class="fi fi-rr-plus-small"></i></a>
-                                                    <ul class="sub-menu">
-                                                        <li><a href="business-planning.html">Business Planning</a></li>
-                                                        <li><a href="financial-advices.html">Financial Advices</a></li>
-                                                        <li><a href="business-analysis.html">Business Analysis</a></li>
-                                                        <li><a href="reports-analysis.html">Reports Analysis</a></li>
-                                                        <li><a href="fintech-analysis.html">Fintech Analysis</a></li>
-                                                        <li><a href="project-reporting.html">Project Reporting</a></li>
-                                                    </ul>
-                                                </li> -->
+                                                <% if (services && services.length > 0) { %>
+                                                    <% services.forEach(service => { %>
+                                                        <li>
+                                                            <a href="/service/<%= service.slug %>"><%= service.Service_Name %></a>
+                                                        </li>
+                                                    <% }); %>
+                                                <% } else { %>
+                                                    <li>
+                                                        <span>No services available</span>
+                                                    </li>
+                                                <% } %>
+                                              
                                             </ul>
                                         </li>
                                         <li class="menu-item-has-children">
                                             <a href="/jobs">Countries</a>
                                             <ul class="sub-menu">
-                                                <!-- <li class=" current-menu-item"><a class="active" href="services1.html">Services 1</a></li>
-                                                <li><a href="services2.html">Services 2</a></li> -->
+                                                <% continent.forEach(continents => { %>
                                                 <li class="last-item menu-item-has-children">
-                                                    <a href="/jobs">Asia <i class="fi fi-rr-plus-small"></i></a>
+                                                    <a href="/jobs"><%= continents.continent %> <i class="fi fi-rr-plus-small"></i></a>
                                                     <ul class="sub-menu">
-                                                        <li><a href="/jobs">india</a></li>
-                                                        <li><a href="/jobs">japan</a></li>
-                                                        <li><a href="/jobs">chaina</a></li>
-                                                        <li><a href="/jobs">Russia</a></li>
+                                                        <% continents.countries.forEach(country => { %>
+                                                        <li><a href="/jobs/<%= country %>"><%= country %></a></li>
+                                                        <% }); %>
                                                     </ul>
                                                 </li>
-                                                <li class="last-item menu-item-has-children">
-                                                    <a href="/jobs">africa <i class="fi fi-rr-plus-small"></i></a>
-                                                    <ul class="sub-menu">
-                                                        <li><a href="/jobs">Brazil</a></li>
-                                                        <li><a href="/jobs">Argentina</a></li>
-                                                        <li><a href="/jobs">Germany</a></li>
-                                                    </ul>
-                                                </li>
+                                                <% }); %>
                                             </ul>
                                         </li>
                                         <li><a href="/news">News</a> </li>
