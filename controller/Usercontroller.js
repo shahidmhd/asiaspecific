@@ -109,19 +109,23 @@ const RenderAbout=async (req,res)=>{
             }
             }
 
-const Renderservice =async (req,res)=>{
-try {
-    const slug = req.params.slug;
-    const service = await Service.findOne({ slug });
-    const services = await Service.find();
-    const continent=await Continent.find()
-    res.render('user/Service',{services: services ,service,continent});
-} catch (error) {
-      // Handle other errors
-      console.error('Error fetching service:', error);
-      res.status(500).render('error', { message: 'Internal Server Error' });
+const Renderservice = async (req, res) => {
+    try {
+        const slug = req.params.slug;
+        const service = await Service.findOne({ slug });
+        const services = await Service.find();
+        const continent = await Continent.find();
+
+        // Determine the active service based on the slug
+        const activeService = services.find(serv => serv.slug === slug);
+
+        res.render('user/Service', { services, service, continent, activeService });
+    } catch (error) {
+        console.error('Error fetching service:', error);
+        res.status(500).render('error', { message: 'Internal Server Error' });
+    }
 }
-}
+
 // const Renderservice = async (req, res) => {
 //     try {
   

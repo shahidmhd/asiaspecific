@@ -90,13 +90,15 @@
              
             <div class="col-lg-4 pl-36 md-pl-15">
                 <ul class="services-list mb-50">
-                    <li><a class="active" >Business Planning</a></li>
-                    <li><a >Financial Advices</a></li>
-                    <li><a >Business Analysis</a></li>
-                    <li><a >Reports Analysis</a></li>
-                    <li><a >Fintech Analysis</a></li>
-                    <li><a >Project Reporting</a></li>
+                    <% services.forEach(service => { %>
+                        <li>
+                            <a href="/service/<%= service.slug %>" class="<%= service.slug === activeService.slug ? 'active' : '' %>">
+                                <%= service.Service_Name %>
+                            </a>
+                        </li>
+                    <% }); %>
                 </ul>
+                
                 <div class="services-add mb-40">
                     <div class="services-overlay"></div>
                     <div class="address-wrap mb-20">
@@ -108,11 +110,11 @@
                             <span class="divider-separator"></span>
                         </div>
                         <div class="contact">
-                            <a href="tel:123222-8888">(123) 222-8888</a>
+                            <a href="tel:8943074789">8943074789</a>
                         </div>
                     </div>
                 </div>
-                <div class="brochures">
+                <!-- <div class="brochures">
                     <div class="content-text">
                         <div class="title-part">
                             <h3 class="title">Brochures</h3>
@@ -126,7 +128,7 @@
                         <a class="dual-btn-connector" href="#">Or</a>
                         <a class="rselement-dual-btn" href="#">Discover</a>
                     </div>
-                </div>
+                </div> -->
             </div>
             <% } %>
         </div> 
