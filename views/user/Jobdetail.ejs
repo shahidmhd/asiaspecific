@@ -103,7 +103,7 @@
                     <div class="title-inner">        		      		
                         <h2 class="title">Apply for this position</h2>					        
                     </div>
-                    <form id="contact-form" method="post" action="/submit-form" >
+                    <form id="contact-form" method="post" action="/submit-form" onsubmit="submitForm(event)">
                         <fieldset>
                             <div class="row">
                                 <div class="col-lg-12 mb-25">
@@ -173,4 +173,13 @@
 <!-- Careers Single Section End -->
 
 </div> 
-<!-- Main content End -->
+
+
+<script>
+    function submitForm(event) {
+  
+    location.reload();
+
+    window.alert("Job Applied successfully")
+}
+</script>

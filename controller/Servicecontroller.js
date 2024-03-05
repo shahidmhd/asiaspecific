@@ -13,12 +13,12 @@ const RenderCountries = async (req, res) => {
     
         // Extract the list of countries from the response
         const countries = response.data.map(country => country.name.common);
-    
+        const Data = await Continent.find() 
         // Sort the countries in ascending order
         const sortedCountries = countries.sort((a, b) => a.localeCompare(b));
     
         // Render the view with the sorted list of countries
-        res.render('admin/Countries', { layout: 'adminlayout', countries: sortedCountries });
+        res.render('admin/Countries', { layout: 'adminlayout', countries: sortedCountries, Data : Data});
     } catch (error) {
         console.error('Error fetching countries:', error);
     
@@ -27,6 +27,17 @@ const RenderCountries = async (req, res) => {
     }
     
 };
+const DeleteCountry = async(req,res)=>{
+    try {
+        const { id } = req.params
+        console.log(id,"fhgsdfgdghfxg");
+        await Continent.findByIdAndDelete({ _id: id });
+        console.log("Country Deleted Sucessfully");
+        res.redirect('/admin/Countries')
+    } catch (err) {
+        console.log(err);
+    }
+}
 const Postcountries = async (req, res) => {
     try {
         const { continent, selectedCountries } = req.body;
@@ -66,6 +77,17 @@ const Renderservicelist =async (req,res)=>{
     }
 }
 
+const DeleteService =async(req,res)=>{
+    try {
+        const { id } = req.params
+        console.log(id);
+        await Service.findByIdAndDelete({ _id: id });
+        console.log("Service Deleted Sucessfully");
+        res.redirect('/admin/servicelist')
+    } catch (err) {
+        console.log(err);
+    }
+}
 const Addservice =async (req,res)=>{
     try {
         // Access form data
@@ -95,6 +117,48 @@ const Addservice =async (req,res)=>{
         res.render('admin/service', { message: null, error: 'Error processing the form. Please try again.' });
     }
 }
+const EditService = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { Service_Name, Service_Description, Main_Heading, About_Me } = req.body;
+
+        const fileData = req.file;
+
+        const olddata = await Service.findById(id);
+        console.log(olddata);
+
+        const oldimg = olddata.image;
+        console.log(fileData ? fileData.filename : oldimg, "hhhhhhhhhhhhhhhai");
+
+        const updateFields = {
+            Service_Name,
+            Service_Description,
+            Main_Heading,
+            About_Me,
+            image: fileData ? fileData.filename : oldimg,
+        };
+
+        const updatedService = await Service.findOneAndUpdate(
+            { _id: id },
+            { $set: updateFields },
+            { new: true } 
+        );
+
+        console.log(updatedService, "nnnnnnnnnnnnnnnnnnnnnnnne");
+
+        if (updatedService) {
+            console.log("Service edited successfully.");
+            res.redirect('/admin/servicelist')
+        } else {
+            console.log("Service not found or not updated.");
+            res.redirect('/admin/servicelist')
+        }
+    } catch (err) {
+        console.error(err);
+        console.log(err);
+        res.status(500).send('Internal Server Error');
+    }
+};
 
 module.exports = {
     Renderservice,
@@ -102,4 +166,7 @@ module.exports = {
     Renderservicelist,
     RenderCountries,
     Postcountries,
+    DeleteCountry,
+    DeleteService,
+    EditService,
 };

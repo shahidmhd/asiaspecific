@@ -14,7 +14,7 @@
             </div>
             <!-- end page title end breadcrumb -->
             <div class="row">
-                <div class="col-12 col-lg-8 mx-auto">
+                <div class="col-12 col-lg-10 mx-auto">
                     <div class="card">
                         <div class="card-body">
                             <form action="/admin/addjob" method="POST" id="jobForm">
@@ -91,17 +91,81 @@
                     </div><!--end card-->
                 </div> <!--end col-->
             </div><!--end row-->
+            <div class="row">
+                <div class="col-12 col-lg-10 mx-auto">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>SL NO</th>
+                                    <th>Job Type</th>
+                                    <th>Category</th>
+                                    <th>Vacancy</th>
+                                    <th>Location</th>
+                                    <th>Email</th>
+                                    <th>Experience</th>
+                                    <th>Skills</th>
+                                    <th>Education</th>
+                                    <th>Working Day</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% if (jobdata) { %>
+                                    <% for (let i = 0; i < jobdata.length; i++) { %>
+                                        <% let currentjob = jobdata[i]; %>
+                                        <tr>
+                                            <td><%= i + 1 %></td>
+                                            <td><%= currentjob.jobType %></td>
+                                            <td><%= currentjob.category %></td>
+                                            <td><%= currentjob.vecancy %></td>
+                                            <td><%= currentjob.location %></td>
+                                            <td><%= currentjob.Email %></td>
+                                            <td><%= currentjob.experience %></td>
+                                            <td><%= currentjob.Skills %></td>
+                                            <td><%= currentjob.education %></td>
+                                            <td><%= currentjob.workingday %></td>
+                                            <td><a href="#" class="btn btn-danger" data-bs-target="#modaldemo3_<%= currentjob._id %>" data-bs-toggle="modal">Delete </a></td>
+                                        </tr>
+                                    <% } %>
+                                <% } else { %>
+                                    <tr>
+                                        <td colspan="11"><h1 style="color: red;">Data not found</h1></td>
+                                    </tr>
+                                <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <% for (let i = 0; i < jobdata.length; i++) { %>
+                <% let currentjob = jobdata[i]; %>
+                <!-- Delete Modal -->
+                <div id="modaldemo3_<%= currentjob._id %>" class="modal fade">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="modal-header" >
+                                    <h5 class="modal-title" id="exampleModalLabel">Confirm</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Are you sure you want to delete?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" id="close-modal">No</button>
+                                    <a href="/admin/jobDelete/<%= currentjob._id %>" class="btn btn-danger" type="button">Yes</a>
+                                </div>
+                            </div><!-- modal-content -->
+                        </div><!-- modal-dialog -->
+                    </div>
+                </div>
+            <% } %>
+            <!-- Delete Modal Close -->
         </div><!-- container -->
-        <!--Start Footer-->
-        <!-- Footer Start -->
-        <footer class="footer text-center text-sm-start">
-            &copy; <script>
-                document.write(new Date().getFullYear())
-            </script> Metrica <span class="text-muted d-none d-sm-inline-block float-end">Crafted with <i
-                    class="mdi mdi-heart text-danger"></i> by Mannatthemes</span>
-        </footer>
-        <!-- end Footer -->
-        <!--end footer-->
+       
     </div>
     <!-- end page content -->
 </div>
@@ -109,6 +173,7 @@
 <!-- Add this code inside your existing script -->
 <!-- Add this code inside your existing script -->
 <script>
+   
     document.addEventListener('DOMContentLoaded', function () {
         const jobForm = document.getElementById('jobForm');
         const skillsInput = document.getElementById('Skills');

@@ -48,8 +48,8 @@
                                                     <td><%= service.Main_Heading %></td>
                                                     <td><%= service.About_Me.length > 5 ? service.About_Me.slice(0, 10) + '...' : service.About_Me %></td>
                                                     <td class="text-end">
-                                                        <a href="#"><i class="las la-pen text-secondary font-16"></i></a>
-                                                        <a href="#"><i class="las la-trash-alt text-secondary font-16"></i></a>
+                                                        <a  class="btn btn-primary" data-bs-target="#modaldemo2_<%= service._id %>" data-bs-toggle="modal">Edit</a>
+                                                        <a href="#" class="btn btn-danger" data-bs-target="#modaldemo3_<%= service._id %>" data-bs-toggle="modal">Delete </a>
                                                     </td>
                                                 </tr>
                                             <% }); %>
@@ -68,9 +68,69 @@
 
 
             </div> <!-- end row -->
+             <!-- Editmodal -->
+             <% for (let i = 0; i < services.length; i++) { %>
+                <% let service = services[i]; %>
+                <div id="modaldemo2_<%= service._id %>" class="modal fade">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <form action="/admin/EditService/<%= service._id %>"  method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+                                <div class="modal-body">
+                                    <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Service_Name" value="<%= service.Service_Name %>" name="Service_Name" id="Service_Name" >
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Main_Heading" value="<%= service.Main_Heading %>" name="Main_Heading" id="Main_Heading" >
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <textarea rows="3" type="text" class="form-control" placeholder="Service_Description" name="Service_Description" id="Service_Description" ><%= service.Service_Description %></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea rows="6" type="text" class="form-control" placeholder="About_Me" name="About_Me" id="About_Me" ><%= service.About_Me %></textarea>
+                                    </div>
+                                    <img src="/uploads/<%= service.image %>"  id="selectedImage<%= service._id %>" style="height: 14em;">
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="image" id="formFileLg_<%= i %>" value="selectedImage<%= service.image %>" name="fileInput" type="file" onchange="updateImagePreview(this, 'selectedImage<%= service._id %>')">
+                                    </div>
+                                    <button class="btn btn-primary btn-block mt-5" type="submit">Save</button>
+                                </div>
+                            </form><!-- modal-body -->
+                        </div><!-- modal-content -->
+                    </div><!-- modal-dialog -->
+                </div><!-- edit modal close -->
+        
+                <% } %>
 
-
-
+            <% for (let i = 0; i < services.length; i++) { %>
+                <% let service = services[i]; %>
+                <!-- Delete Modal -->
+                <div id="modaldemo3_<%= service._id %>" class="modal fade">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="modal-header" >
+                                    <h5 class="modal-title" id="exampleModalLabel">Confirm</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Are you sure you want to delete?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" id="close-modal">No</button>
+                                    <a href="/admin/serviceDelete/<%= service._id %>" class="btn btn-danger" type="button">Yes</a>
+                                </div>
+                            </div><!-- modal-content -->
+                        </div><!-- modal-dialog -->
+                    </div>
+                </div>
+            <% } %>
+            <!-- Delete Modal Close -->
 
 
 
@@ -82,15 +142,19 @@
 
         <!--Start Footer-->
         <!-- Footer Start -->
-        <footer class="footer text-center text-sm-start">
-            &copy;
-            <script>
-                document.write(new Date().getFullYear())
-            </script> Metrica <span class="text-muted d-none d-sm-inline-block float-end">Crafted with <i
-                    class="mdi mdi-heart text-danger"></i> by Mannatthemes</span>
-        </footer>
-        <!-- end Footer -->
-        <!--end footer-->
+    
     </div>
     <!-- end page content -->
 </div>
+<script>
+      function updateImagePreview(input,imageId ) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById(imageId).src = e.target.result;
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+</script>

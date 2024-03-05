@@ -2,12 +2,14 @@ const Service = require("../models/Servicemodel");
 const Continent = require('../models/Countriemodel');
 const Job = require("../models/Jobmodel");
 const User = require("../models/UserSchema");
+const NewsAndUpdates = require("../models/New&updates");
 
 
 const Renderhome =async (req,res)=>{
     const services = await Service.find();
     const continent=await Continent.find()
-    res.render('user/Home',{services: services ,continent});
+    const News = await NewsAndUpdates.find()
+    res.render('user/Home',{services: services ,continent,News});
 }
 const Rendersuccess=async (req,res)=>{
     const services = await Service.find();
@@ -60,6 +62,53 @@ const applyjob=async (req,res)=>{
       }
 }
 
+const GetAppliedJobs = async(req,res)=>{
+    try {
+        const data = await User.find().populate('jobId');;
+        console.log(data);
+        res.render("admin/Appliedjob",{ layout: 'adminlayout', data})
+    } catch (error) {
+        console.log(error);
+    }
+}
+const RenderAbout=async (req,res)=>{
+    try {
+        
+        
+        const services = await Service.find();
+        const continent=await Continent.find()
+        res.render('user/About',{services: services ,continent});
+    } catch (error) {
+          // Handle other errors
+          console.error('Error fetching service:', error);
+          res.status(500).render('error', { message: 'Internal Server Error' });
+    }
+    }
+
+    const RenderNews=async (req,res)=>{
+        try {
+            const News = await NewsAndUpdates.find();
+            const services = await Service.find();
+            const continent=await Continent.find()
+            res.render('user/News',{services: services ,continent,News});
+        } catch (error) {
+              // Handle other errors
+              console.error('Error fetching service:', error);
+              res.status(500).render('error', { message: 'Internal Server Error' });
+        }
+        }
+        const RenderContact=async (req,res)=>{
+            try {
+                const services = await Service.find();
+                const continent=await Continent.find()
+                res.render('user/Contact',{services: services ,continent});
+            } catch (error) {
+                  // Handle other errors
+                  console.error('Error fetching service:', error);
+                  res.status(500).render('error', { message: 'Internal Server Error' });
+            }
+            }
+
 const Renderservice =async (req,res)=>{
 try {
     const slug = req.params.slug;
@@ -95,5 +144,9 @@ module.exports = {
     Renderjobs,
     Renderjobdetail,
     applyjob,
-    Rendersuccess
+    Rendersuccess,
+    RenderAbout,
+    GetAppliedJobs,
+    RenderNews,
+    RenderContact,
 };

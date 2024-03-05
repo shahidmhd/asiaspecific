@@ -12,8 +12,9 @@ const Addjob=async (req,res)=>{
  
      // Sort the countries in ascending order
      const sortedCountries = countries.sort((a, b) => a.localeCompare(b));
+     const jobdata = await Job.find();
  
-    res.render('admin/Addjob',{ layout: 'adminlayout',countries: sortedCountries })
+    res.render('admin/Addjob',{ layout: 'adminlayout',countries: sortedCountries ,jobdata})
    } catch (error) {
     
    }
@@ -56,10 +57,21 @@ const Addjobdata = async (req, res) => {
         res.status(500).json({ message: 'Error processing the form. Please try again.' });
     }
 };
+const DeleteJob =async(req,res)=>{
+    try {
+        const { id } = req.params
+        console.log(id);
+        await Job.findByIdAndDelete({ _id: id });
+        console.log("Job Deleted Sucessfully");
+        res.redirect('/admin/jobs')
+    } catch (err) {
+        console.log(err);
+    }
+}
 
 
 module.exports = {
     Addjob,
-    Addjobdata
-   
+    Addjobdata,
+   DeleteJob,
 };
