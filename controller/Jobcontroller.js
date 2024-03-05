@@ -68,10 +68,33 @@ const DeleteJob =async(req,res)=>{
         console.log(err);
     }
 }
+const EditJob = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const updateFields = req.body;
+
+        // Ensure that only non-empty fields from the request body are considered for the update
+        Object.keys(updateFields).forEach((key) => (updateFields[key] == null || updateFields[key] === "") && delete updateFields[key]);
+
+        const updatedJob = await Job.findOneAndUpdate({ _id: id }, updateFields, { new: true });
+
+        if (!updatedJob) {
+            // Handle case where the job is not found
+            return res.status(404).json({ error: "Job not found" });
+        }
+
+        console.log("Job Updated Successfully");
+        res.redirect('/admin/jobs');
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+};
 
 
 module.exports = {
     Addjob,
     Addjobdata,
    DeleteJob,
+   EditJob
 };

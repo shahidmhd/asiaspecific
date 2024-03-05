@@ -1,6 +1,4 @@
-
-
- <div class="page-wrapper">
+<div class="page-wrapper">
     <!-- Page Content-->
     <div class="page-content-tab">
         <div class="container-fluid">
@@ -21,7 +19,8 @@
                                 <div class="form-group row">
                                     <div class="col-md-6 mb-3">
                                         <label for="category">Job category</label>
-                                        <input type="text" placeholder="Job category" class="form-control" name="category" id="category">
+                                        <input type="text" placeholder="Job category" class="form-control"
+                                            name="category" id="category">
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="jobType">Job Type</label>
@@ -37,54 +36,65 @@
                                 <div class="form-group row">
                                     <div class="col-md-6 mb-3">
                                         <label for="Email">Email</label>
-                                        <input type="email" placeholder="Email" class="form-control" name="Email" id="Email">
+                                        <input type="email" placeholder="Email" class="form-control" name="Email"
+                                            id="Email">
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="vecancy">Vacancy</label>
-                                        <input type="text" placeholder="Vacancy" class="form-control" name="vecancy" id="vecancy">
+                                        <input type="text" placeholder="Vacancy" class="form-control" name="vecancy"
+                                            id="vecancy">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-md-4 mb-3">
                                         <label for="location">Location</label>
-                                       
-                                            <select class="form-select" name="location">
-                                                <% countries.forEach(country => { %>
-                                                    <option value="<%= country %>"><%= country %></option>
+
+                                        <select class="form-select" name="location">
+                                            <% countries.forEach(country=> { %>
+                                                <option value="<%= country %>">
+                                                    <%= country %>
+                                                </option>
                                                 <% }); %>
-                                            </select>
-                                       
+                                        </select>
+
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="experience">Experience</label>
-                                        <input type="text" placeholder="Experience" class="form-control" name="experience" id="experience">
+                                        <input type="text" placeholder="Experience" class="form-control"
+                                            name="experience" id="experience">
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="workingday">Working Days</label>
-                                        <input type="text" placeholder="Working Days" class="form-control" name="workingday" id="workingday">
+                                        <input type="text" placeholder="Working Days" class="form-control"
+                                            name="workingday" id="workingday">
                                     </div>
                                 </div>
-                               
-<div class="form-group row">
-    <div class="col-md-6 mb-3">
-        <label for="Skills">Skills</label>
-        <input type="text" placeholder="Skills" class="form-control" name="Skills" id="Skills">
-        <button type="button" id="addSkill">Add Skill</button>
-        <ul id="selectedSkillsList"></ul>
-    </div>
-    
-    <div class="col-md-6 mb-3">
-        <label for="education">Education</label>
-        <input type="text" placeholder="Education" class="form-control" name="education" id="education">
-        <button type="button" id="addEducation">Add Education</button>
-        <ul id="selectedEducationList"></ul>
-    </div>
-</div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="Skills">Skills</label>
+                                        <input type="text" placeholder="Skills" class="form-control" name="Skills"
+                                            id="Skills">
+                                        <button type="button" id="addSkill">Add Skill</button>
+                                        <ul id="selectedSkillsList"></ul>
+                                    </div>
+
+                                    <div class="col-md-6 mb-3">
+                                        <label for="education">Education</label>
+                                        <input type="text" placeholder="Education" class="form-control" name="education"
+                                            id="education">
+                                        <button type="button" id="addEducation">Add Education</button>
+                                        <ul id="selectedEducationList"></ul>
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <label for="description">Description</label>
-                                    <textarea rows="5" placeholder="Description..." class="form-control" name="description" id="description"></textarea>
-                                    <button class="btn btn-de-primary btn-sm text-light px-4 mt-3 mb-0" type="submit">Save</button>
-                                    <button class="btn btn-de-danger btn-sm text-light px-4 mt-3 mb-0" type="button" id="cancelBtn">Cancel</button>
+                                    <textarea rows="5" placeholder="Description..." class="form-control"
+                                        name="description" id="description"></textarea>
+                                    <button class="btn btn-de-primary btn-sm text-light px-4 mt-3 mb-0"
+                                        type="submit">Save</button>
+                                    <button class="btn btn-de-danger btn-sm text-light px-4 mt-3 mb-0" type="button"
+                                        id="cancelBtn">Cancel</button>
                                 </div>
                             </form>
                         </div> <!--end card-body-->
@@ -108,64 +118,176 @@
                                     <th>Education</th>
                                     <th>Working Day</th>
                                     <th>Action</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <% if (jobdata) { %>
-                                    <% for (let i = 0; i < jobdata.length; i++) { %>
-                                        <% let currentjob = jobdata[i]; %>
-                                        <tr>
-                                            <td><%= i + 1 %></td>
-                                            <td><%= currentjob.jobType %></td>
-                                            <td><%= currentjob.category %></td>
-                                            <td><%= currentjob.vecancy %></td>
-                                            <td><%= currentjob.location %></td>
-                                            <td><%= currentjob.Email %></td>
-                                            <td><%= currentjob.experience %></td>
-                                            <td><%= currentjob.Skills %></td>
-                                            <td><%= currentjob.education %></td>
-                                            <td><%= currentjob.workingday %></td>
-                                            <td><a href="#" class="btn btn-danger" data-bs-target="#modaldemo3_<%= currentjob._id %>" data-bs-toggle="modal">Delete </a></td>
-                                        </tr>
-                                    <% } %>
-                                <% } else { %>
-                                    <tr>
-                                        <td colspan="11"><h1 style="color: red;">Data not found</h1></td>
-                                    </tr>
-                                <% } %>
+                                    <% for (let i=0; i < jobdata.length; i++) { %>
+                                        <% let currentjob=jobdata[i]; %>
+                                            <tr>
+                                                <td>
+                                                    <%= i + 1 %>
+                                                </td>
+                                                <td>
+                                                    <%= currentjob.jobType %>
+                                                </td>
+                                                <td>
+                                                    <%= currentjob.category %>
+                                                </td>
+                                                <td>
+                                                    <%= currentjob.vecancy %>
+                                                </td>
+                                                <td>
+                                                    <%= currentjob.location %>
+                                                </td>
+                                                <td>
+                                                    <%= currentjob.Email %>
+                                                </td>
+                                                <td>
+                                                    <%= currentjob.experience %>
+                                                </td>
+                                                <td>
+                                                    <%= currentjob.Skills %>
+                                                </td>
+                                                <td>
+                                                    <%= currentjob.education %>
+                                                </td>
+                                                <td>
+                                                    <%= currentjob.workingday %>
+                                                </td>
+                                                <td><a href="#" class="btn btn-primary"
+                                                        data-bs-target="#modaldemo4_<%= currentjob._id %>"
+                                                        data-bs-toggle="modal">Edit </a></td>
+                                                <td><a href="#" class="btn btn-danger"
+                                                        data-bs-target="#modaldemo3_<%= currentjob._id %>"
+                                                        data-bs-toggle="modal">Delete </a></td>
+
+                                            </tr>
+                                            <% } %>
+                                                <% } else { %>
+                                                    <tr>
+                                                        <td colspan="11">
+                                                            <h1 style="color: red;">Data not found</h1>
+                                                        </td>
+                                                    </tr>
+                                                    <% } %>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-            <% for (let i = 0; i < jobdata.length; i++) { %>
-                <% let currentjob = jobdata[i]; %>
-                <!-- Delete Modal -->
-                <div id="modaldemo3_<%= currentjob._id %>" class="modal fade">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <div class="modal-header" >
-                                    <h5 class="modal-title" id="exampleModalLabel">Confirm</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
+            <% for (let i=0; i < jobdata.length; i++) { %>
+                <% let currentjob=jobdata[i]; %>
+                    <!-- Delete Modal -->
+                    <div id="modaldemo3_<%= currentjob._id %>" class="modal fade">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
                                 <div class="modal-body">
-                                    <p>Are you sure you want to delete?</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" id="close-modal">No</button>
-                                    <a href="/admin/jobDelete/<%= currentjob._id %>" class="btn btn-danger" type="button">Yes</a>
-                                </div>
-                            </div><!-- modal-content -->
-                        </div><!-- modal-dialog -->
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Confirm</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Are you sure you want to delete?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" id="close-modal">No</button>
+                                        <a href="/admin/jobDelete/<%= currentjob._id %>" class="btn btn-danger"
+                                            type="button">Yes</a>
+                                    </div>
+                                </div><!-- modal-content -->
+                            </div><!-- modal-dialog -->
+                        </div>
                     </div>
-                </div>
-            <% } %>
-            <!-- Delete Modal Close -->
+                    <% } %>
+                        <!-- Delete Modal Close -->
+                        <% for (let i = 0; i < jobdata.length; i++) { %>
+                            <% let currentjob = jobdata[i]; %>
+                            <!-- Edit Modal -->
+                            <div id="modaldemo4_<%= currentjob._id %>" class="modal fade">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <form action="/admin/editjob/<%= currentjob._id %>" method="POST" id="jobForm_<%= currentjob._id %>">
+                                                <div class="form-group row">
+                                                    <div class="col-md-6 mb-3">
+                                                        <label for="category">Job category</label>
+                                                        <input type="text" placeholder="Job category" class="form-control" name="category" id="category" value="<%= currentjob.category %>">
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <label for="jobType">Job Type</label>
+                                                        <select class="form-select" name="jobType" id="jobType">
+                                                            <option selected disabled>Select Job Type</option>
+                                                            <option value="full-time" <%= currentjob.jobType === 'full-time' ? 'selected' : '' %>>Full Time</option>
+                                                            <option value="part-time" <%= currentjob.jobType === 'part-time' ? 'selected' : '' %>>Part Time</option>
+                                                            <option value="work-from-home" <%= currentjob.jobType === 'work-from-home' ? 'selected' : '' %>>Work from Home</option>
+                                                            <option value="hybrid" <%= currentjob.jobType === 'hybrid' ? 'selected' : '' %>>Hybrid</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-md-6 mb-3">
+                                                        <label for="Email">Email</label>
+                                                        <input type="email" placeholder="Email" class="form-control" name="Email" id="Email" value="<%= currentjob.Email %>">
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <label for="vecancy">Vacancy</label>
+                                                        <input type="text" placeholder="Vacancy" class="form-control" name="vecancy" id="vecancy" value="<%= currentjob.vecancy %>">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-md-4 mb-3">
+                                                        <label for="location">Location</label>
+                                                        <select class="form-select" name="location" id="location">
+                                                            <% countries.forEach(country => { %>
+                                                                <option value="<%= country %>" <%= currentjob.location === country ? 'selected' : '' %>>
+                                                                    <%= country %>
+                                                                </option>
+                                                            <% }); %>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-4 mb-3">
+                                                        <label for="experience">Experience</label>
+                                                        <input type="text" placeholder="Experience" class="form-control" name="experience" id="experience" value="<%= currentjob.experience %>">
+                                                    </div>
+                                                    <div class="col-md-4 mb-3">
+                                                        <label for="workingday">Working Days</label>
+                                                        <input type="text" placeholder="Working Days" class="form-control" name="workingday" id="workingday" value="<%= currentjob.workingday %>">
+                                                    </div>
+                                                </div>
+                                                <!-- <div class="form-group row">
+                                                    <div class="col-md-6 mb-3">
+                                                        <label for="Skills">Skills</label>
+                                                        <input type="text" placeholder="Skills" class="form-control" name="Skills" id="Skills" value="<%= currentjob.Skills %>">
+                                                        <button type="button" id="addSkill">Add Skill</button>
+                                                        <ul id="selectedSkillsList"></ul>
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <label for="education">Education</label>
+                                                        <input type="text" placeholder="Education" class="form-control" name="education" id="education" value="<%= currentjob.education %>">
+                                                        <button type="button" id="addEducation">Add Education</button>
+                                                        <ul id="selectedEducationList"></ul>
+                                                    </div>
+                                                </div> -->
+                                                <div class="form-group">
+                                                    <label for="description">Description</label>
+                                                    <textarea rows="5" placeholder="Description..." class="form-control" name="description" id="description"><%= currentjob.description %></textarea>
+                                                    <a href="javascript:void(0);" class="btn btn-primary" onclick="submitForm('<%= currentjob._id %>')">Yes</a>
+                                                    <button class="btn btn-de-danger btn-sm text-light px-4 mt-3 mb-0" type="button" id="cancelBtn">Cancel</button>
+                                                </div>
+                                            </form>
+                                        </div><!-- modal-content -->
+                                    </div><!-- modal-dialog -->
+                                </div>
+                            </div>
+                        <% } %>
+                        
+                                    <!-- Edit Modal Close -->
         </div><!-- container -->
-       
+
     </div>
     <!-- end page content -->
 </div>
@@ -173,7 +295,11 @@
 <!-- Add this code inside your existing script -->
 <!-- Add this code inside your existing script -->
 <script>
-   
+ function submitForm(jobId) {
+        var formId = "jobForm_" + jobId;
+        var form = document.getElementById(formId);
+        form.submit();
+    }
     document.addEventListener('DOMContentLoaded', function () {
         const jobForm = document.getElementById('jobForm');
         const skillsInput = document.getElementById('Skills');

@@ -20,7 +20,7 @@ const express=require('express');
 const { login, Getlogin, logout } = require('../controller/Admincontroller');
 const { Renderservice, Addservice, Renderservicelist, RenderCountries, Postcountries, DeleteCountry, DeleteService, EditService,  } = require('../controller/Servicecontroller');
 const multer = require('../utils/multer');
-const { Addjob, Addjobdata, DeleteJob } = require('../controller/Jobcontroller');
+const { Addjob, Addjobdata, DeleteJob, EditJob } = require('../controller/Jobcontroller');
 const { AddNewsAndUpdates, RenderNewandUpdates, DeleteNewsandUpdates, EditNewsandUpdates } = require('../controller/News&Updates');
 const { GetContactForm, Deletecontact } = require('../controller/Contactcontroller');
 const { GetAppliedJobs } = require('../controller/Usercontroller');
@@ -53,6 +53,7 @@ router.get('/deleteCountry/:id',DeleteCountry);
 router.get('/jobs',Addjob)
 router.post('/addjob',Addjobdata);
 router.get('/jobDelete/:id',DeleteJob);
+router.post('/editjob/:id',EditJob);
 
 //New and Updates Routes
 router.get('/new&updates',RenderNewandUpdates);

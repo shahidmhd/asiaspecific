@@ -7626,7 +7626,8 @@ Video CSS
 --------------------------*/
 #scrollUp {
   text-align: center;
-  bottom: 40px;
+  /* bottom: 40px; */
+  bottom: 90px;
   cursor: pointer;
   display: none;
   position: fixed;
@@ -7721,6 +7722,20 @@ Video CSS
   color: #363636 !important;
   opacity: 1;
 }
+#whatsapp-icon {
+  position: fixed;
+  bottom: 30px;
+  right: 10px;
+  z-index: 1000;
+  cursor: pointer;
+
+}
+
+#whatsapp-icon img {
+  width: 60px; /* Adjust the size of the WhatsApp icon as needed */
+  height: 60px;
+}
+
 @keyframes loaderspin {
   0% {
     transform: translate(-50%, -50%) rotate(0deg);
