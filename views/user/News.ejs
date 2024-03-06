@@ -45,9 +45,10 @@
                                         </li> 
                                     </ul>
                                 </div>
-                                <div class="blog-desc">   
-                                    <%= item.News_Description %>
-                                </div>
+                                <div class="blog-desc" style=" white-space: pre-wrap;">
+                                    <%- item.News_Description.replace(/•/g,"\n") %>
+                                  </div>
+                                  
                                 <!-- <div class="blog-button blog-inner-btn">
                                     <a class="blog-btn" >.</a>
                                 </div> -->
