@@ -1,6 +1,7 @@
 const express=require('express');
 const { Renderhome, Renderservice, Renderjobs, Renderjobdetail, applyjob, Rendersuccess, RenderAbout, RenderNews, RenderContact } = require('../controller/Usercontroller');
 const { AddContactForm } = require('../controller/Contactcontroller');
+const { RenderAbroad } = require('../controller/Abroadcontroller');
 const router = express.Router();
 
 
@@ -19,5 +20,5 @@ router.post("/submit-form",applyjob);
 router.get("/success",Rendersuccess);
 
 router.post('/Addcontact',AddContactForm);
-
+router.get('/abroad',RenderAbroad);
 module.exports=router

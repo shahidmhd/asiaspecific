@@ -24,7 +24,8 @@ const Addjobdata = async (req, res) => {
     try {
         // Parse the selectedSkills array from the request body
         const selectedSkills = JSON.parse(req.body.selectedSkills);
-
+        const fileData = req.file;
+        console.log(fileData,"hhhhhhhh");
         // Assuming you have a Job model defined using Mongoose
         const jobData = {
             category: req.body.category,
@@ -38,6 +39,7 @@ const Addjobdata = async (req, res) => {
             education: req.body.education,
             description: req.body.description,
             selectedSkills: selectedSkills,
+            image: fileData ? fileData.filename : null,
             // Assuming you also have selectedEducations in your request body
             selectedEducations: JSON.parse(req.body.selectedEducations)
         };
@@ -72,11 +74,21 @@ const EditJob = async (req, res) => {
     try {
         const { id } = req.params;
         const updateFields = req.body;
+        const fileData = req.file;
+        console.log(fileData, "yyyfr");
 
         // Ensure that only non-empty fields from the request body are considered for the update
         Object.keys(updateFields).forEach((key) => (updateFields[key] == null || updateFields[key] === "") && delete updateFields[key]);
 
-        const updatedJob = await Job.findOneAndUpdate({ _id: id }, updateFields, { new: true });
+        const olddata = await Job.findById(id);
+        const oldimg = olddata.image;
+        console.log(fileData ? fileData.filename : oldimg, "hhhhhhhhhhhhhhhai");
+
+        const updatedJob = await Job.findOneAndUpdate(
+            { _id: id },
+            { ...updateFields, image: fileData ? fileData.filename : oldimg }, 
+            { new: true }
+        );
 
         if (!updatedJob) {
             // Handle case where the job is not found
@@ -90,6 +102,7 @@ const EditJob = async (req, res) => {
         res.status(500).json({ error: "Internal Server Error" });
     }
 };
+
 
 
 module.exports = {

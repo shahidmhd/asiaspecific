@@ -51,9 +51,9 @@ router.get('/deleteCountry/:id',DeleteCountry);
 
 //Jobs Route
 router.get('/jobs',Addjob)
-router.post('/addjob',Addjobdata);
+router.post('/addjob',multer.single('fileInput'),Addjobdata);
 router.get('/jobDelete/:id',DeleteJob);
-router.post('/editjob/:id',EditJob);
+router.post('/editjob/:id',multer.single('fileInput'),EditJob);
 
 //New and Updates Routes
 router.get('/new&updates',RenderNewandUpdates);

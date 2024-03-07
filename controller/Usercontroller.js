@@ -9,7 +9,8 @@ const Renderhome =async (req,res)=>{
     const services = await Service.find();
     const continent=await Continent.find()
     const News = await NewsAndUpdates.find()
-    res.render('user/Home',{services: services ,continent,News});
+    const Jobs = await Job.find();
+    res.render('user/Home',{services: services ,continent,News,Jobs});
 }
 const Rendersuccess=async (req,res)=>{
     const services = await Service.find();
