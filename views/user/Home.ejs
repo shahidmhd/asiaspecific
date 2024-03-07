@@ -21,7 +21,7 @@
         </div>
         </div>
         <!-- Slide 2 -->
-        <div class="slider-direction" style="background-image: url(images/slider/style1/h1-2.jpg);">
+        <div class="slider-direction" style="background-image: url(images/blog/design1.png);">
         <div class="container">
                 <div class="content-part">
                     <span class="sl-subtitle wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay="0s">Welcome to Asia Pacific</span>
@@ -42,52 +42,6 @@
     </div>
 </div>
 <!-- Slider End -->
-
-<!-- Job Start -->
-<div id="rs-blog" class="rs-blog blog-main-home pt-120 pb-20 md-pt-80 md-pb-10">
-    <div class="container">  
-        <div class="sec-title text-center mb-50">
-             <span class="sub-text">Jobs</span>
-             <h2 class="title">
-                 Latest news Jobs<br> 
-                 
-             </h2>
-        </div>
-        <div class="rs-carousel owl-carousel" data-loop="true" data-items="3" data-margin="30" data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000" data-smart-speed="800" data-dots="false" data-nav="false" data-nav-speed="false" data-center-mode="false" data-mobile-device="1" data-mobile-device-nav="false" data-mobile-device-dots="false" data-ipad-device="2" data-ipad-device-nav="false" data-ipad-device-dots="true" data-ipad-device2="2" data-ipad-device-nav2="false" data-ipad-device-dots2="true" data-md-device="3" data-md-device-nav="false" data-md-device-dots="true">
-            <% if (Jobs.length > 0) { %>
-                <% Jobs.forEach(data => { %>
-            <div class="blog-item">
-                <div class="image-wrap">
-                    <a href="/news"><img src="/uploads/<%= data.image %>" alt=""></a>
-                </div>
-                <div class="blog-content">
-                  
-                    <h3 class="blog-title"><a><%= data.category %></a></h3>
-                    <div class="desc"><%=  data.description.slice(0, 160) + '...'  %></div>
-                    <!-- <div class="blog-button"><a href="blog-single.html"></a></div> -->
-                </div>
-            </div>
-            <% }); %>
-            <% } else { %>
-                <div class="blog-item">
-                    <div class="image-wrap">
-                        <a href="blog-single.html"><img src="images/blog/style1/1.jpg" alt=""></a>
-                    </div>
-                    <div class="blog-content">
-                        <ul class="blog-meta">
-                               <li class="admin"><i class="fi  fi-rr-user"></i>Rstheme</li>
-                               <li class="date"><i class="fi fi-rr-calendar"></i>23 March 2022</li>
-                           </ul>
-                        <h3 class="blog-title"><a href="blog-single.html">How investing in dependend your business growth.</a></h3>
-                        <div class="desc">We denounce with righteous indige nation and dislike men who are so...</div>
-                        <div class="blog-button"><a href="blog-single.html">Read More</a></div>
-                    </div>
-                </div>
-                <% } %>
-        </div>
-    </div>
-</div>
-<!-- job end -->
 <!-- About Start -->
 <div id="rs-about" class="rs-about about-style1 pt-120 pb-120 md-pt-80 md-pb-70">
     <div class="container">
@@ -150,6 +104,52 @@
     </div> -->
 </div>
 <!-- About End -->
+<!-- Job Start -->
+<div id="rs-blog" class="rs-blog blog-main-home pt-120 pb-20 md-pt-80 md-pb-10">
+    <div class="container">  
+        <div class="sec-title text-center mb-50">
+             <span class="sub-text">Jobs</span>
+             <h2 class="title">
+                 Latest news Jobs<br> 
+                 
+             </h2>
+        </div>
+        <div class="rs-carousel owl-carousel" data-loop="true" data-items="3" data-margin="30" data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000" data-smart-speed="800" data-dots="false" data-nav="false" data-nav-speed="false" data-center-mode="false" data-mobile-device="1" data-mobile-device-nav="false" data-mobile-device-dots="false" data-ipad-device="2" data-ipad-device-nav="false" data-ipad-device-dots="true" data-ipad-device2="2" data-ipad-device-nav2="false" data-ipad-device-dots2="true" data-md-device="3" data-md-device-nav="false" data-md-device-dots="true">
+            <% if (Jobs.length > 0) { %>
+                <% Jobs.forEach(data => { %>
+            <div class="blog-item">
+                <div class="image-wrap">
+                    <a href="/news"><img src="/uploads/<%= data.image %>" alt=""></a>
+                </div>
+                <div class="blog-content">
+                  
+                    <h3 class="blog-title"><a><%= data.category %></a></h3>
+                    <div class="desc"><%=  data.description.slice(0, 160) + '...'  %></div>
+                    <!-- <div class="blog-button"><a href="blog-single.html"></a></div> -->
+                </div>
+            </div>
+            <% }); %>
+            <% } else { %>
+                <div class="blog-item">
+                    <div class="image-wrap">
+                        <a href="blog-single.html"><img src="images/blog/style1/1.jpg" alt=""></a>
+                    </div>
+                    <div class="blog-content">
+                        <ul class="blog-meta">
+                               <li class="admin"><i class="fi  fi-rr-user"></i>Rstheme</li>
+                               <li class="date"><i class="fi fi-rr-calendar"></i>23 March 2022</li>
+                           </ul>
+                        <h3 class="blog-title"><a href="blog-single.html">How investing in dependend your business growth.</a></h3>
+                        <div class="desc">We denounce with righteous indige nation and dislike men who are so...</div>
+                        <div class="blog-button"><a href="blog-single.html">Read More</a></div>
+                    </div>
+                </div>
+                <% } %>
+        </div>
+    </div>
+</div>
+<!-- job end -->
+
 <!-- Education -->
 
 <!-- Education end -->
@@ -268,7 +268,7 @@
                     Our <span>Team?</span>
                 </h2>
                 <div class="btn-part">
-                    <a class="readon details join" href="contact1.html">Join Our Team</a>
+                    <a class="readon details join" href="/contact">Join Our Team</a>
                 </div>
             </div>
         </div>
@@ -276,10 +276,92 @@
 </div>
 <!-- Call To Action Choose End -->
 
-
+<!-- countries -->
+<div id="rs-blog" class="rs-blog blog-main-home pt-10 pb-15 md-pt-10 md-pb-10">
+    <div class="container">  
+        <div class="sec-title mb-50">
+            <span class="sub-text p-2">Countries</span>
+            <h2 class="title">Asia Pacific<br></h2>
+            <ul class="flex">
+                <li>Australia</li>
+                <li>Brunei</li>
+                <li>Cambodia</li>
+                <li>China</li>
+                <li>Hong Kong</li>
+                <li>Japan</li>
+                <li>Laos</li>
+                <li>Maldives</li>
+                <li>Malaysia</li>
+                <li>New Zealand</li>
+                <li>Singapore</li>
+                <li>South Korea</li>
+                <li>Thailand</li>
+                <li>Vietnam</li>
+              </ul>
+              <h2 class="title p-2">AFRICA<br></h2>
+              <ul class="flex">
+                <li>Ghana</li>
+                <li>Mauritius</li>
+                <li>South</li>
+                <li>Africa</li>
+              </ul>
+              <h2 class="title p-2">AMERICA<br></h2>
+              <ul class="flex">
+                <li>Brazil</li>
+                <li>Canada</li>
+                <li>Mexico</li>
+                <li>United States</li>
+              </ul>
+              <h2 class="title p-2">Europe<br></h2>
+              <ul class="flex">
+                <li>Austria</li>
+                <li>Belgium</li>
+                <li>Croatia</li>
+                <li>Cyprus</li>
+                <li>Czech Republic</li>
+                <li>Denmark</li>
+                <li>Finland</li>
+                <li>France</li>
+                <li>Iceland</li>
+                <li>Germany</li>
+                <li>Greece</li>
+                <li>Hungary</li>
+                <li>Italy</li>
+                <li>Malta</li>
+                <li>Netherlands</li>
+                <li>Norway</li>
+                <li>Poland</li>
+                <li>Portugal</li>
+                <li>Russian Federation</li>
+                <li>Serbia</li>
+                <li>Slovakia</li>
+                <li>Spain</li>
+                <li>Sweden</li>
+                <li>Switzerland</li>
+                <li>United Kingdom</li>
+              </ul>
+              <h2 class="title p-2">Middle East [Arab States]<br></h2>
+              <ul class="flex">
+                <li>Bahrain</li>
+                <li>Israel</li>
+                <li>Jordan</li>
+                <li>Kuwait</li>
+                <li>Oman</li>
+                <li>Qatar</li>
+                <li>Kingdom of Saudi Arabia (KSA)</li>
+                <li>United Arab Emirates (UAE)</li>
+              
+              </ul>
+              
+          </div>
+          
+        
+    </div>
+</div>
+<!--  -->
 
 <!-- Blog Section Start -->
-<div id="rs-blog" class="rs-blog blog-main-home pt-120 pb-115 md-pt-80 md-pb-80">
+<div id="rs-blog" class="rs-blog blog-main-home pt-120 pb-15 md-pt-80 md-pb-10">
     <div class="container">  
         <div class="sec-title text-center mb-50">
              <span class="sub-text">News & BLog</span>
@@ -343,3 +425,39 @@
         naviga
     }
 </script>
+<style>
+ 
+
+
+.flex {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap to the next line on smaller screens */
+  gap: 10px;
+}
+
+.flex li {
+  font-weight: bold;
+  background-color: #f1f7fa; /* Optional: Add background color for better visibility */
+  padding: 10px;
+  border-radius: 5px;
+  flex: 1 0 calc(33.3333% - 20px); /* Adjust based on the number of columns you want */
+  box-sizing: border-box;
+}
+
+/* Responsive styles for smaller screens */
+@media only screen and (max-width: 768px) {
+  .flex li {
+    flex: 1 0 calc(50% - 20px);
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .flex li {
+    flex: 1 0 calc(100% - 20px);
+  }
+}
+
+
+</style>
