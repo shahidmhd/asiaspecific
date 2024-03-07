@@ -21,20 +21,20 @@
                 <div class="career-inner-section">
                     <div class="career-wrap">
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-12">
                                 <div class="title-inner">
                                     <div class="description">
-                                        <p><strong>Job Category:</strong> <%=jobs.category%><br><strong>Email:</strong><%=jobs.Email%></p>
+                                        <p><strong>Job Category:</strong> <%=jobs.category%></p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                            <!-- <div class="col-lg-6">
                                 <div class="title-inner">
                                     <div class="description">
                                         <p><strong>Job Type:</strong> <%=jobs.jobType%><br><strong>Vacancy:</strong>  <%=jobs.vecancy%></p>  
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <div class="career-img">
@@ -50,32 +50,11 @@
                             <li><%= skill %></li>
                         <% }); %>
                     </ul>
-                    <h2 class="title pt-30 pb-30">Educational Requirements:</h2>
-                    <ul class="dots">
-                        <% jobs.selectedEducations.forEach(function(skill) { %>
-                            <li><%= skill %></li>
-                        <% }); %>
-                    </ul>
-
-                    <h2 class="title pt-30 pb-25">Experience Requirements:</h2>
-                    <ul class="dots">
-                        <li><%=jobs.experience%></li>
-                    </ul>
-
-                    <h2 class="title pt-20 pb-20">Office Location:</h2>
-                    <ul class="dots">
-                        <li><%=jobs.location%></li>
-                    </ul>
-
-                    <h2 class="title pt-20 pb-20">Working Days</h2>
+                
+                    <!-- <h2 class="title pt-20 pb-20">Working Days</h2>
                     <ul class="dots">
                         <li><%=jobs.workingday%></li>
-                    </ul>
-
-                    <h2 class="title pt-20 pb-20">Employment Status</h2>
-                    <ul class="dots">
-                        <li><%=jobs.jobType%></li>
-                    </ul>
+                    </ul> -->
 
                     <!-- <h2 class="title pt-20 pb-20">Salary:</h2>
                     <ul class="dots">
