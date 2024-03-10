@@ -13,7 +13,7 @@ const Addjob=async (req,res)=>{
      // Sort the countries in ascending order
      const sortedCountries = countries.sort((a, b) => a.localeCompare(b));
      const jobdata = await Job.find();
- 
+ console.log(jobdata,"yyyydd");
     res.render('admin/Addjob',{ layout: 'adminlayout',countries: sortedCountries ,jobdata})
    } catch (error) {
     
