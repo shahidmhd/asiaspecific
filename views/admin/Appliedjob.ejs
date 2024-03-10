@@ -48,9 +48,9 @@
                                             <% data.forEach(item => { %>
                                                 <tr>
                                                     <td><%= item.name %></td>
-                                                    <td><%= item.email%></td>
+                                                    <td><%= item.email %></td>
                                                     <td><%= item.phone %></td>
-                                                    <td> <%= item.age %></td>
+                                                    <td><%= item.age %></td>
                                                     <td><%= item.qualification %></td>
                                                     <td><%= item.speed %></td>
                                                     <td><%= item.englishKnowledge %></td>
@@ -58,7 +58,7 @@
                                                     <td><%= item.jobId.category %></td>
                                                     <td></td>
                                                     <td class="text-end">
-                                                       <a href="#" class="btn btn-danger" data-bs-target="#modaldemo3_<%= item._id %>" data-bs-toggle="modal">Delete </a>
+                                                        <a href="#" class="btn btn-danger" data-bs-target="#modaldemo3_<%= item._id %>" data-bs-toggle="modal">Delete </a>
                                                     </td>
                                                 </tr>
                                             <% }); %>
@@ -67,6 +67,7 @@
                                                 <td colspan="5" class="text-center">No services available.</td>
                                             </tr>
                                         <% } %>
+                                        
                                     </tbody>
                                     
                                 </table><!--end /table-->

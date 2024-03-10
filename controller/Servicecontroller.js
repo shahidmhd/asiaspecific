@@ -30,7 +30,7 @@ const RenderCountries = async (req, res) => {
 const DeleteCountry = async(req,res)=>{
     try {
         const { id } = req.params
-        console.log(id,"fhgsdfgdghfxg");
+       
         await Continent.findByIdAndDelete({ _id: id });
         console.log("Country Deleted Sucessfully");
         res.redirect('/admin/Countries')
@@ -53,7 +53,7 @@ const Postcountries = async (req, res) => {
     
         // Save the new continent to the database
         const savedContinent = await newContinent.save();
-        console.log(savedContinent, "Data saved successfully!");
+      
     
         res.redirect('/admin/countries');
     } catch (error) {

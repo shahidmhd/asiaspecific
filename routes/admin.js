@@ -22,8 +22,8 @@ const { Renderservice, Addservice, Renderservicelist, RenderCountries, Postcount
 const multer = require('../utils/multer');
 const { Addjob, Addjobdata, DeleteJob, EditJob } = require('../controller/Jobcontroller');
 const { AddNewsAndUpdates, RenderNewandUpdates, DeleteNewsandUpdates, EditNewsandUpdates } = require('../controller/News&Updates');
-const { GetContactForm, Deletecontact } = require('../controller/Contactcontroller');
-const { GetAppliedJobs } = require('../controller/Usercontroller');
+const { GetContactForm, Deletecontact, Deletesubscriber } = require('../controller/Contactcontroller');
+const { GetAppliedJobs, Getsubscribers } = require('../controller/Usercontroller');
 const router = express.Router();
 
 
@@ -64,10 +64,10 @@ router.post('/editNewsandupdates/:id',multer.single('fileInput'),EditNewsandUpda
 //Contact Route
 router.get('/contact',GetContactForm);
 router.get('/deletecontact/:id',Deletecontact);
-
+router.get('/deletesubscribe/:id',Deletesubscriber);
 
 //Applied Job Route
 router.get('/appliedjob',GetAppliedJobs);
-
+router.get('/subscriptionlist',Getsubscribers);
 
 module.exports=router

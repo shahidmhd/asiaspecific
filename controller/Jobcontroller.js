@@ -64,14 +64,12 @@ const Addjob=async (req,res)=>{
 //     }
 // };
 const Addjobdata = async (req, res) => {
-    console.log(req.file, "tt");
-    console.log(req.body);
+
 
     try {
     
         const fileData = req.file;
-        console.log(fileData, "hhhhhhhh");
-
+     
         // Create a new job instance using the Job model and populate it with the request data
         const newJob = new Job({
             category: req.body.category,
@@ -91,7 +89,7 @@ const Addjobdata = async (req, res) => {
         // Save the job to the database
         await newJob.save();
 
-        console.log('Job saved successfully:', newJob);
+       
 
         // You might want to send a response to the client
         res.redirect('/admin/jobs');
@@ -111,9 +109,7 @@ const DeleteJob =async(req,res)=>{
     }
 }
 const EditJob = async (req, res) => {
-    console.log(req.body);
-    console.log(req.file);
-    console.log(req.params);
+
     try {
         const { id } = req.params;
         const updateFields = req.body;

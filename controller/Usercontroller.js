@@ -3,7 +3,7 @@ const Continent = require('../models/Countriemodel');
 const Job = require("../models/Jobmodel");
 const User = require("../models/UserSchema");
 const NewsAndUpdates = require("../models/New&updates");
-
+const Phone = require("../models/mobilemodel");
 
 const Renderhome =async (req,res)=>{
     const services = await Service.find();
@@ -22,7 +22,7 @@ const Renderjobs=async (req,res)=>{
     try {
         const slug = req.params.slug;
         const jobs = await Job.find({location: slug });
-        console.log(jobs,"iiiii");
+ 
         const services = await Service.find();
     const continent=await Continent.find()
     res.render('user/Job',{services: services ,continent,jobs})
@@ -35,7 +35,7 @@ const Renderjobdetail=async (req,res)=>{
         const slug = req.params.slug;
     
         const jobs = await Job.findOne({_id: slug });
-        console.log(jobs,"ddd");
+     
         const services = await Service.find();
     const continent=await Continent.find()
     res.render('user/Jobdetail',{services: services ,continent,jobs})
@@ -66,8 +66,18 @@ const applyjob=async (req,res)=>{
 const GetAppliedJobs = async(req,res)=>{
     try {
         const data = await User.find().populate('jobId');;
-        console.log(data);
+    
         res.render("admin/Appliedjob",{ layout: 'adminlayout', data})
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+const Getsubscribers = async(req,res)=>{
+    try {
+        const data = await Phone.find()
+        
+        res.render("admin/Subscribers",{ layout: 'adminlayout',data})
     } catch (error) {
         console.log(error);
     }
@@ -154,4 +164,5 @@ module.exports = {
     GetAppliedJobs,
     RenderNews,
     RenderContact,
+    Getsubscribers
 };

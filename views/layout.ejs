@@ -43,18 +43,51 @@
     <!-- This stylesheet dynamically changed from style.less -->
     <!-- responsive css -->
     <link rel="stylesheet" type="text/css" href="/css/responsive.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-kJq0Ms9P7EA67RpBti1MzVVlaqFlFXjs7Iz77x0cRIpu6U5eCm+dR3uhjzW4fjA5" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha384-kJq0Ms9P7EA67RpBti1MzVVlaqFlFXjs7Iz77x0cRIpu6U5eCm+dR3uhjzW4fjA5" crossorigin="anonymous">
 
 </head>
 
 <body class="defult-home">
+    <!-- modal -->
+    <div class="modal fade centered" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #0C6460;">
+                    <h5 class="modal-title text-white" id="exampleModalLabel">Enter your Mobile Number</h5>
+                    <button type="button" id="closeModalBtn" class="btn btn-close" data-dismiss="modal"
+                        aria-label="Close">
+                        <span aria-hidden="true"></span>
+                    </button>
+
+                </div>
+                <form action="/Addmobile" method="post" id="subscribeForm">
+                    <div class="modal-body d-flex flex-column align-items-end">
+                        <input type="text" class="form-control mb-2" placeholder="Phone" name="phone">
+                        <button type="submit" class="btn text-white" style="background-color:#0C6460;"
+                            id="closeModalBtns">Subscribe</button>
+                    </div>
+                </form>
+                <!-- <div class="modal-footer">
+                    <button type="button" id="closeModalBtns" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">
+                        Close
+                    </button>
+                    
+                    <button type="button" class="btn text-white"  style="background-color:#0C6460;">Subscribe</button>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <!--  -->
     <div class="offwrap"></div>
 
     <!--Preloader start here-->
     <div id="pre-load">
         <div id="loader" class="loader">
             <div class="loader-container">
-                <div class="loader-icon"><img src="/images/blog/sample.png" alt="Renovix - Business Consulting Html Template ">
+                <div class="loader-icon"><img src="/images/blog/sample.png"
+                        alt="Renovix - Business Consulting Html Template ">
                 </div>
             </div>
         </div>
@@ -69,13 +102,15 @@
     <%- include('partials/userfooter') %>
         <!-- start scrollUp  -->
         <!-- WhatsApp icon -->
-<div id="whatsapp-icon">
-    <a href="https://wa.me/+918943074789" target="_blank">
-        <img src="/images/blog/whatsappicon.png" alt="WhatsApp">
-    </a>
-</div>
+        <div id="whatsapp-icon">
+            <a href="https://wa.me/+918943074789" target="_blank">
+                <img src="/images/blog/whatsappicon.png" alt="WhatsApp">
+            </a>
+        </div>
 
-
+        <div id="contact-icon">
+            <img src="/images/blog/contacts.png" alt="WhatsApp">
+        </div>
         <div id="scrollUp">
             <i class="fa fa-angle-up"></i>
         </div>
@@ -83,24 +118,79 @@
 
 
         <!-- Search Modal Start -->
-        <div class="modal fade search-modal" id="searchModal" tabindex="-1">
-            <button type="button" class="close" data-bs-dismiss="modal">
-                <i class="fi fi-rr-cross-small"></i>
-            </button>
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="search-block clearfix">
-                        <form>
-                            <div class="form-group">
-                                <input class="form-control" placeholder="Searching..." type="text">
-                                <button type="submit" value="Search"><i class="fi fi-rr-search"></i></button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
         <!-- Search Modal End -->
+        <!-- moda -->
+
+        <!--  -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Declare myModal outside the event listener
+                var myModal;
+        
+                // Add an event listener to the contact-icon
+                var contactIcon = document.getElementById('contact-icon');
+                contactIcon.addEventListener('click', function () {
+                    // Show the modal when contact-icon is clicked
+                    myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
+                    myModal.show();
+                });
+        
+                // Handle close button click
+                var closeModalBtn = document.getElementById('closeModalBtn');
+                closeModalBtn.addEventListener('click', function () {
+                    // Use Bootstrap's hide method to close the modal
+                    myModal.hide();
+                });
+        
+                var closeModalBtns = document.getElementById('closeModalBtns');
+                closeModalBtns.addEventListener('click', function () {
+                    // Use Bootstrap's hide method to close the modal
+                    myModal.hide();
+                });
+        
+                var closeModalsub = document.getElementById('sub');
+                closeModalsub.addEventListener('click', function () {
+                    // Use Bootstrap's hide method to close the modal
+                    myModal.hide();
+                });
+            });
+        </script>
+        
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var subscribeForm = document.getElementById('subscribeForm');
+
+                if (subscribeForm) {
+                    subscribeForm.addEventListener('submit', function (event) {
+                        event.preventDefault();
+
+                        var formData = new FormData(subscribeForm);
+
+                        fetch('/Addmobile', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded',
+                            },
+                            body: new URLSearchParams(formData).toString(),
+                        })
+                            .then(response => response.json())
+                            .then(data => {
+                                console.log('Server response:', data);
+                                // Optionally, close the modal or perform other actions
+                                alert(data.message)
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                                // Handle errors, e.g., show an alert
+                                alert('Error processing the form. Please try again.');
+                            });
+                    });
+                } else {
+                    console.error('Element with ID "subscribeForm" not found.');
+                }
+            });
+        </script>
 
         <!-- modernizr js -->
         <script src="/js/modernizr-2.8.3.min.js"></script>

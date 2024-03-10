@@ -1,0 +1,108 @@
+<div class="page-wrapper">
+
+    <!-- Page Content-->
+    <div class="page-content-tab">
+
+        <div class="container-fluid">
+            <!-- Page-Title -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+
+                        <h4 class="page-title">Basic Tables</h4>
+                    </div>
+                    <!--end page-title-box-->
+                </div>
+                <!--end col-->
+            </div>
+            <!-- end page title end breadcrumb -->
+
+
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Subscribers</h4>
+
+                        </div><!--end card-header-->
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>INDEX</th>
+                                            <th>NO</th>
+                                            
+                                            <th class="text-end">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% if (data.length > 0) { %>
+                                            <% data.forEach((item, index) => { %>
+                                                <tr>
+                                                    <td><%= index + 1 %></td>
+                                                    <td><%= item.phone %></td>
+                                                    <td class="text-end">
+                                                        <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modaldemo3_<%= item._id %>">Delete</a>
+
+                                                    </td>
+                                                </tr>
+                                            <% }); %>
+                                        <% } else { %>
+                                            <tr>
+                                                <td colspan="3" class="text-center">No services available.</td>
+                                            </tr>
+                                        <% } %>
+                                        
+                                    </tbody>
+                                    
+                                </table><!--end /table-->
+                            </div><!--end /tableresponsive-->
+                        </div><!--end card-body-->
+                    </div><!--end card-->
+                </div> <!-- end col -->
+
+
+            </div> <!-- end row -->
+            
+          
+
+          
+            <% for (let i = 0; i < data.length; i++) { %>
+                <% let item = data[i]; %>
+                <!-- Delete Modal -->
+                <div class="modal fade" id="modaldemo3_<%= item._id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <p>Are you sure you want to delete?</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <a href="/admin/deletesubscribe/<%= item._id %>" type="button" class="btn btn-primary">Yes</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            <% } %>
+            <!-- Delete Modal Close -->
+
+
+
+        </div><!-- container -->
+
+        <!--Start Rightbar-->
+
+        <!--end Rightbar-->
+
+        <!--Start Footer-->
+        <!-- Footer Start -->
+    
+    </div>
+    <!-- end page content -->
+</div>

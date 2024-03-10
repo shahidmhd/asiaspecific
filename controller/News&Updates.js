@@ -44,7 +44,7 @@ const AddNewsAndUpdates =async (req,res)=>{
 const DeleteNewsandUpdates = async (req, res) => {
     try {
         const { id } = req.params
-        console.log(id,"fhgsdfgdghfxg");
+       
         await NewsAndUpdates.findByIdAndDelete({ _id: id });
         console.log("new&updates Deleted Sucessfully");
         res.redirect('/admin/new&updates')
@@ -60,7 +60,7 @@ const EditNewsandUpdates = async (req, res) => {
         const fileData = req.file;
 
         const olddata = await NewsAndUpdates.findById(id);
-        console.log(olddata);
+       
 
         const oldimg = olddata.image;
         console.log(fileData ? fileData.filename : oldimg, "hhhhhhhhhhhhhhhai");
@@ -77,7 +77,7 @@ const EditNewsandUpdates = async (req, res) => {
             { new: true } // Return the modified document
         );
 
-        console.log(updatedNewandUpdates, "nnnnnnnnnnnnnnnnnnnnnnnne");
+     
 
         if (updatedNewandUpdates) {
             console.log("News and Updates edited successfully.");

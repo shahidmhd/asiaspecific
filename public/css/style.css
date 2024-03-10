@@ -7627,7 +7627,7 @@ Video CSS
 #scrollUp {
   text-align: center;
   /* bottom: 40px; */
-  bottom: 90px;
+  bottom: 145px;
   cursor: pointer;
   display: none;
   position: fixed;
@@ -7730,7 +7730,18 @@ Video CSS
   cursor: pointer;
 
 }
+#contact-icon {
+  position: fixed;
+  bottom: 85px;
+  right: 15px;
+  z-index: 1000;
+  cursor: pointer;
 
+}
+#contact-icon img {
+  width: 55px; /* Adjust the size of the WhatsApp icon as needed */
+  height: 55px;
+}
 #whatsapp-icon img {
   width: 60px; /* Adjust the size of the WhatsApp icon as needed */
   height: 60px;
