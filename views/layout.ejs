@@ -108,9 +108,9 @@
             </a>
         </div>
 
-        <div id="contact-icon">
+        <!-- <div id="contact-icon">
             <img src="/images/blog/contacts.png" alt="WhatsApp">
-        </div>
+        </div> -->
         <div id="scrollUp">
             <i class="fa fa-angle-up"></i>
         </div>
@@ -125,37 +125,37 @@
         <!--  -->
         <script>
             document.addEventListener('DOMContentLoaded', function () {
-                // Declare myModal outside the event listener
-                var myModal;
+                // Check if a condition is met to show the modal
+                var shouldShowModal = '<%= show %>' === 'true';
         
-                // Add an event listener to the contact-icon
-                var contactIcon = document.getElementById('contact-icon');
-                contactIcon.addEventListener('click', function () {
-                    // Show the modal when contact-icon is clicked
-                    myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
+                if (shouldShowModal) {
+                    var myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
+        
+                    // Show the modal
                     myModal.show();
-                });
         
-                // Handle close button click
-                var closeModalBtn = document.getElementById('closeModalBtn');
-                closeModalBtn.addEventListener('click', function () {
-                    // Use Bootstrap's hide method to close the modal
-                    myModal.hide();
-                });
+                    // Handle close button click
+                    var closeModalBtn = document.getElementById('closeModalBtn');
+                    closeModalBtn.addEventListener('click', function () {
+                        // Use Bootstrap's hide method to close the modal
+                        myModal.hide();
+                    });
         
-                var closeModalBtns = document.getElementById('closeModalBtns');
-                closeModalBtns.addEventListener('click', function () {
-                    // Use Bootstrap's hide method to close the modal
-                    myModal.hide();
-                });
+                    var closeModalBtns = document.getElementById('closeModalBtns');
+                    closeModalBtns.addEventListener('click', function () {
+                        // Use Bootstrap's hide method to close the modal
+                        myModal.hide();
+                    });
         
-                var closeModalsub = document.getElementById('sub');
-                closeModalsub.addEventListener('click', function () {
-                    // Use Bootstrap's hide method to close the modal
-                    myModal.hide();
-                });
+                    var closeModalsub = document.getElementById('sub');
+                    closeModalsub.addEventListener('click', function () {
+                        // Use Bootstrap's hide method to close the modal
+                        myModal.hide();
+                    });
+                }
             });
         </script>
+        
         
         <script>
             document.addEventListener('DOMContentLoaded', function () {

@@ -7627,7 +7627,7 @@ Video CSS
 #scrollUp {
   text-align: center;
   /* bottom: 40px; */
-  bottom: 145px;
+  bottom: 90px;
   cursor: pointer;
   display: none;
   position: fixed;

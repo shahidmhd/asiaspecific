@@ -6,39 +6,43 @@ const NewsAndUpdates = require("../models/New&updates");
 const Phone = require("../models/mobilemodel");
 
 const Renderhome =async (req,res)=>{
+    req.session.show = true;
     const services = await Service.find();
     const continent=await Continent.find()
     const News = await NewsAndUpdates.find()
     const Jobs = await Job.find();
-    res.render('user/Home',{services: services ,continent,News,Jobs});
+    res.render('user/Home',{services: services ,continent,News,Jobs,show: req.session.show});
 }
 const Rendersuccess=async (req,res)=>{
+    req.session.show = false;
     const services = await Service.find();
     const continent=await Continent.find()
-    res.render('user/Success',{services: services ,continent});
+    res.render('user/Success',{services: services ,continent,show: req.session.show});
 }
 
 const Renderjobs=async (req,res)=>{
     try {
+        req.session.show = false;
         const slug = req.params.slug;
         const jobs = await Job.find({location: slug });
  
         const services = await Service.find();
     const continent=await Continent.find()
-    res.render('user/Job',{services: services ,continent,jobs})
+    res.render('user/Job',{services: services ,continent,jobs,show: req.session.show})
     } catch (error) {
         
     }
 }
 const Renderjobdetail=async (req,res)=>{
     try {
+        req.session.show = false;
         const slug = req.params.slug;
     
         const jobs = await Job.findOne({_id: slug });
      
         const services = await Service.find();
     const continent=await Continent.find()
-    res.render('user/Jobdetail',{services: services ,continent,jobs})
+    res.render('user/Jobdetail',{services: services ,continent,jobs,show: req.session.show})
     } catch (error) {
         
     }
@@ -46,6 +50,7 @@ const Renderjobdetail=async (req,res)=>{
 
 const applyjob=async (req,res)=>{
     try {
+        
         // Assuming req.body contains the necessary user data
         const userData = req.body;
         // Create a new instance of the User model
@@ -85,10 +90,10 @@ const Getsubscribers = async(req,res)=>{
 const RenderAbout=async (req,res)=>{
     try {
         
-        
+        req.session.show = false;
         const services = await Service.find();
         const continent=await Continent.find()
-        res.render('user/About',{services: services ,continent});
+        res.render('user/About',{services: services ,continent,show: req.session.show});
     } catch (error) {
           // Handle other errors
           console.error('Error fetching service:', error);
@@ -98,10 +103,11 @@ const RenderAbout=async (req,res)=>{
 
     const RenderNews=async (req,res)=>{
         try {
+            req.session.show = false;
             const News = await NewsAndUpdates.find();
             const services = await Service.find();
             const continent=await Continent.find()
-            res.render('user/News',{services: services ,continent,News});
+            res.render('user/News',{services: services ,continent,News,show: req.session.show});
         } catch (error) {
               // Handle other errors
               console.error('Error fetching service:', error);
@@ -110,9 +116,10 @@ const RenderAbout=async (req,res)=>{
         }
         const RenderContact=async (req,res)=>{
             try {
+                req.session.show = false;
                 const services = await Service.find();
                 const continent=await Continent.find()
-                res.render('user/Contact',{services: services ,continent});
+                res.render('user/Contact',{services: services ,continent,show: req.session.show});
             } catch (error) {
                   // Handle other errors
                   console.error('Error fetching service:', error);
@@ -122,6 +129,7 @@ const RenderAbout=async (req,res)=>{
 
 const Renderservice = async (req, res) => {
     try {
+        req.session.show = false;
         const slug = req.params.slug;
         const service = await Service.findOne({ slug });
         const services = await Service.find();
@@ -130,7 +138,7 @@ const Renderservice = async (req, res) => {
         // Determine the active service based on the slug
         const activeService = services.find(serv => serv.slug === slug);
 
-        res.render('user/Service', { services, service, continent, activeService });
+        res.render('user/Service', { services, service, continent, activeService ,show: req.session.show});
     } catch (error) {
         console.error('Error fetching service:', error);
         res.status(500).render('error', { message: 'Internal Server Error' });
