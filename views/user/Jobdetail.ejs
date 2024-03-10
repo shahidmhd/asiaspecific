@@ -46,11 +46,32 @@
                     <h2 class="title pb-10">Required skills:</h2>
 
                     <ul class="dots">
-                        <% jobs.selectedSkills.forEach(function(skill) { %>
+                        <% jobs.Skills.forEach(function(skill) { %>
                             <li><%= skill %></li>
                         <% }); %>
                     </ul>
-                
+                    <% if (jobs.companyname1 || jobs.companyname2) { %>
+                        <h2 class="title pb-10">About Company</h2>
+                    <% } %>
+                    
+                    <% if (jobs.companyname1) { %>
+                        <h5 class=" p-10"><%= jobs.companyname1 %></h5>
+                   
+                        
+                    <% } %>
+                    <% if (jobs.companydescription1 ) { %>
+                   <p style="margin: 0 0 1.5em 3em;"><%= jobs.companydescription1 %></p>
+                  
+                    <% } %>
+                    <% if (jobs.companyname2) { %>
+                        <h5 class="p-10"><%= jobs.companyname2 %></h5>
+                   
+                    <% } %>
+                    <% if (jobs.companydescription2 ) { %>
+                   <p style="margin: 0 0 1.5em 3em;"><%= jobs.companydescription2 %></p>
+                  
+                        
+                    <% } %>
                     <!-- <h2 class="title pt-20 pb-20">Working Days</h2>
                     <ul class="dots">
                         <li><%=jobs.workingday%></li>

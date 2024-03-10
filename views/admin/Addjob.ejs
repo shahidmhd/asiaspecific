@@ -23,30 +23,14 @@
                                             name="category" id="category">
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label for="jobType">Job Type</label>
-                                        <select class="form-select" name="jobType" id="jobType">
-                                            <option selected disabled>Select Job Type</option>
-                                            <option value="full-time">Full Time</option>
-                                            <option value="part-time">Part Time</option>
-                                            <option value="work-from-home">Work from Home</option>
-                                            <option value="hybrid">Hybrid</option>
-                                        </select>
+                                        <label for="category">salary</label>
+                                        <input type="text" placeholder="salary" class="form-control"
+                                            name="salary" id="salary">
                                     </div>
                                 </div>
+                                
                                 <div class="form-group row">
                                     <div class="col-md-6 mb-3">
-                                        <label for="Email">Email</label>
-                                        <input type="email" placeholder="Email" class="form-control" name="Email"
-                                            id="Email">
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="vecancy">Vacancy</label>
-                                        <input type="text" placeholder="Vacancy" class="form-control" name="vecancy"
-                                            id="vecancy">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-md-4 mb-3">
                                         <label for="location">Location</label>
 
                                         <select class="form-select" name="location">
@@ -58,13 +42,9 @@
                                         </select>
 
                                     </div>
-                                    <div class="col-md-4 mb-3">
-                                        <label for="experience">Experience</label>
-                                        <input type="text" placeholder="Experience" class="form-control"
-                                            name="experience" id="experience">
-                                    </div>
-                                    <div class="col-md-4 mb-3">
-                                        <label for="workingday">Working Days</label>
+                                    
+                                    <div class="col-md-6 mb-3">
+                                        <label for="workingday">Working Hours</label>
                                         <input type="text" placeholder="Working Days" class="form-control"
                                             name="workingday" id="workingday">
                                     </div>
@@ -73,18 +53,42 @@
                                 <div class="form-group row">
                                     <div class="col-md-6 mb-3">
                                         <label for="Skills">Skills</label>
-                                        <input type="text" placeholder="Skills" class="form-control" name="Skills"
-                                            id="Skills">
-                                        <button type="button" id="addSkill">Add Skill</button>
+                                        <input type="text" placeholder="Skills" class="form-control" name="Skills" id="Skills">
+                                        <button type="button" id="addSkill" onclick="getdata()">Add Skill</button>
                                         <ul id="selectedSkillsList"></ul>
                                     </div>
+                                    
 
-                                    <div class="col-md-6 mb-3">
+                                    <!-- <div class="col-md-6 mb-3">
                                         <label for="education">Education</label>
                                         <input type="text" placeholder="Education" class="form-control" name="education"
                                             id="education">
                                         <button type="button" id="addEducation">Add Education</button>
                                         <ul id="selectedEducationList"></ul>
+                                    </div> -->
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="category">Company Name</label>
+                                        <input type="text" placeholder="Company Name" class="form-control"
+                                            name="companyname1" id="companyname1">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="category">Company Description</label>
+                                        <textarea rows="5" placeholder="Description..." class="form-control"
+                                        name="companydescription1" id="companydescription1"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="category">Company Name</label>
+                                        <input type="text" placeholder="Company Name" class="form-control"
+                                            name="companyname2" id="companyname2">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="category">Company Description</label>
+                                        <textarea rows="5" placeholder="Description..." class="form-control"
+                                        name="companydescription2" id="companydescription2"></textarea>
                                     </div>
                                 </div>
                                 <div class="card-body">
@@ -96,7 +100,7 @@
                                     <textarea rows="5" placeholder="Description..." class="form-control"
                                         name="description" id="description"></textarea>
                                     <button class="btn btn-de-primary btn-sm text-light px-4 mt-3 mb-0"
-                                        type="submit">Save</button>
+                                        type="submit" onclick="submitForm()">Save</button>
                                     <button class="btn btn-de-danger btn-sm text-light px-4 mt-3 mb-0" type="button"
                                         id="cancelBtn">Cancel</button>
                                 </div>
@@ -112,14 +116,14 @@
                             <thead>
                                 <tr>
                                     <th>SL NO</th>
-                                    <th>Job Type</th>
+                                 <th>image</th>
                                     <th>Category</th>
-                                    <th>Vacancy</th>
+                                    
                                     <th>Location</th>
-                                    <th>Email</th>
-                                    <th>Experience</th>
-                                    <th>Skills</th>
-                                    <th>Education</th>
+                                   
+                                    
+                                    
+                                   
                                     <th>Working Day</th>
                                     <th>Action</th>
                                     <th>Action</th>
@@ -136,27 +140,17 @@
                                                 <td>
                                                     <img src="/uploads/<%= currentjob.image %>" alt="image" height="100px" width="100px"/>
                                                 </td>
-                                                <td>
-                                                    <%= currentjob.jobType %>
-                                                </td>
+                                               
                                                 <td>
                                                     <%= currentjob.category %>
                                                 </td>
-                                                <td>
-                                                    <%= currentjob.vecancy %>
-                                                </td>
+                                               
                                                 <td>
                                                     <%= currentjob.location %>
                                                 </td>
-                                                <td>
-                                                    <%= currentjob.Email %>
-                                                </td>
-                                                <td>
-                                                    <%= currentjob.experience %>
-                                                </td>
-                                                <td>
-                                                    <%= currentjob.Skills %>
-                                                </td>
+                                               
+                                               
+                                               
                                                 <td>
                                                     <%= currentjob.education %>
                                                 </td>
@@ -193,7 +187,7 @@
                                 <div class="modal-body">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">Confirm</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
@@ -201,7 +195,7 @@
                                         <p>Are you sure you want to delete?</p>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" id="close-modal">No</button>
+                                        <button type="button" class="btn btn-secondary" id="close-modal" >No</button>
                                         <a href="/admin/jobDelete/<%= currentjob._id %>" class="btn btn-danger"
                                             type="button">Yes</a>
                                     </div>
@@ -225,28 +219,14 @@
                                                         <input type="text" placeholder="Job category" class="form-control" name="category" id="category" value="<%= currentjob.category %>">
                                                     </div>
                                                     <div class="col-md-6 mb-3">
-                                                        <label for="jobType">Job Type</label>
-                                                        <select class="form-select" name="jobType" id="jobType">
-                                                            <option selected disabled>Select Job Type</option>
-                                                            <option value="full-time" <%= currentjob.jobType === 'full-time' ? 'selected' : '' %>>Full Time</option>
-                                                            <option value="part-time" <%= currentjob.jobType === 'part-time' ? 'selected' : '' %>>Part Time</option>
-                                                            <option value="work-from-home" <%= currentjob.jobType === 'work-from-home' ? 'selected' : '' %>>Work from Home</option>
-                                                            <option value="hybrid" <%= currentjob.jobType === 'hybrid' ? 'selected' : '' %>>Hybrid</option>
-                                                        </select>
+                                                        <label for="category">salary</label>
+                                        <input type="text" placeholder="salary" class="form-control"
+                                            name="salary" id="salary " value="<%= currentjob.salary %>">
                                                     </div>
                                                 </div>
+                                                
                                                 <div class="form-group row">
                                                     <div class="col-md-6 mb-3">
-                                                        <label for="Email">Email</label>
-                                                        <input type="email" placeholder="Email" class="form-control" name="Email" id="Email" value="<%= currentjob.Email %>">
-                                                    </div>
-                                                    <div class="col-md-6 mb-3">
-                                                        <label for="vecancy">Vacancy</label>
-                                                        <input type="text" placeholder="Vacancy" class="form-control" name="vecancy" id="vecancy" value="<%= currentjob.vecancy %>">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <div class="col-md-4 mb-3">
                                                         <label for="location">Location</label>
                                                         <select class="form-select" name="location" id="location">
                                                             <% countries.forEach(country => { %>
@@ -256,28 +236,44 @@
                                                             <% }); %>
                                                         </select>
                                                     </div>
-                                                    <div class="col-md-4 mb-3">
-                                                        <label for="experience">Experience</label>
-                                                        <input type="text" placeholder="Experience" class="form-control" name="experience" id="experience" value="<%= currentjob.experience %>">
-                                                    </div>
-                                                    <div class="col-md-4 mb-3">
+                                                   
+                                                    <div class="col-md-6 mb-3">
                                                         <label for="workingday">Working Days</label>
                                                         <input type="text" placeholder="Working Days" class="form-control" name="workingday" id="workingday" value="<%= currentjob.workingday %>">
                                                     </div>
                                                 </div>
-                                                <!-- <div class="form-group row">
+                                                <div class="form-group row">
                                                     <div class="col-md-6 mb-3">
+                                                        <label for="category">Company Name</label>
+                                                        <input type="text" placeholder="Company Name" class="form-control"
+                                                            name="companyname1" id="companyname1" value="<%= currentjob.companyname1 %>">
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <label for="category">Company Description</label>
+                                                        <textarea rows="5" placeholder="Description..." class="form-control"
+                                                        name="companydescription1" id="companydescription1"><%= currentjob.companydescription1 %></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-md-6 mb-3">
+                                                        <label for="category">Company Name</label>
+                                                        <input type="text" placeholder="Company Name" class="form-control"
+                                                            name="companyname2" id="companyname2" value="<%= currentjob.companyname2 %>">
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <label for="category">Company Description</label>
+                                                        <textarea rows="5" placeholder="Description..." class="form-control"
+                                                        name="companydescription2" id="companydescription2"><%= currentjob.companydescription2 %></textarea>
+                                                    </div>
+                                                </div>
+                                                <!-- <div class="form-group row">
+                                                    <div class="col-sm-12 mb-3">
                                                         <label for="Skills">Skills</label>
                                                         <input type="text" placeholder="Skills" class="form-control" name="Skills" id="Skills" value="<%= currentjob.Skills %>">
                                                         <button type="button" id="addSkill">Add Skill</button>
                                                         <ul id="selectedSkillsList"></ul>
                                                     </div>
-                                                    <div class="col-md-6 mb-3">
-                                                        <label for="education">Education</label>
-                                                        <input type="text" placeholder="Education" class="form-control" name="education" id="education" value="<%= currentjob.education %>">
-                                                        <button type="button" id="addEducation">Add Education</button>
-                                                        <ul id="selectedEducationList"></ul>
-                                                    </div>
+                                                    
                                                 </div> -->
                                                 <img src="/uploads/<%= currentjob.image %>"  id="selectedImage<%= currentjob._id %>" style="height: 14em;">
                                                 <div class="form-group">
@@ -285,13 +281,13 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="description">Description</label>
-                                                    <textarea rows="5" placeholder="Description..." class="form-control" name="description" id="description"><%= currentjob.description %></textarea>
+                                                    <textarea rows="5" placeholder="Description..." class="form-control mb-2" name="description" id="description"><%= currentjob.description %></textarea>
                                                     <a href="javascript:void(0);" class="btn btn-primary" onclick="submitForm('<%= currentjob._id %>')">Yes</a>
-                                                    <button class="btn btn-de-danger btn-sm text-light px-4 mt-3 mb-0" type="button" id="cancelBtn">Cancel</button>
+                                                    <button  class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
                                                 </div>
                                             </form>
-                                        </div><!-- modal-content -->
-                                    </div><!-- modal-dialog -->
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         <% } %>
@@ -306,80 +302,68 @@
 <!-- Add this code inside your existing script -->
 <!-- Add this code inside your existing script -->
 <script>
- function submitForm(jobId) {
-        var formId = "jobForm_" + jobId;
-        var form = document.getElementById(formId);
-        form.submit();
+ const skillsArray = [];
+
+function getdata() {
+    const skillsInput = document.getElementById('Skills');
+    const data = skillsInput.value.trim();
+
+    if (data !== '') {
+        skillsArray.push(data);
+
+        // Update the skills list
+        displayItems('selectedSkillsList', skillsArray);
+
+        // Clear the input field
+        skillsInput.value = '';
     }
+
+    console.log(skillsArray, "rr");
+    console.log("hiiiii");
+}
+
+function displayItems(listId, itemsArray) {
+    const selectedList = document.getElementById(listId);
+    selectedList.innerHTML = '';
+
+    itemsArray.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        selectedList.appendChild(li);
+    });
+}
+
+
+function submitForm(jobId) {
+    console.log("data");
+    const skillsInput = document.getElementById('Skills');
+    skillsInput.value = JSON.stringify(skillsArray);
+
+    var formId = "jobForm_" + jobId;
+    var form = document.getElementById(formId);
+
+    console.log("Form ID:", formId);
+    console.log("Skills Value:", skillsInput.value);
+
+    form.submit();
+}
     document.addEventListener('DOMContentLoaded', function () {
         const jobForm = document.getElementById('jobForm');
-        const skillsInput = document.getElementById('Skills');
-        const addSkillButton = document.getElementById('addSkill');
-        const selectedSkillsList = document.getElementById('selectedSkillsList');
-        const educationInput = document.getElementById('education');
-        const addEducationButton = document.getElementById('addEducation'); // Corrected the button ID
-        const educationList = document.getElementById('selectedEducationList'); // Corrected the list ID
-        const selectedSkills = [];
-        const selectedEducations = []; // Corrected the array name
-        addSkillButton.addEventListener('click', function () {
-            const skillValue = skillsInput.value.trim();
-            if (skillValue) {
-                selectedSkills.push(skillValue);
-                updateSelectedSkills();
-            }
-        });
+     
 
-        addEducationButton.addEventListener('click', function () {
-            const educationValue = educationInput.value.trim();
-            if (educationValue) {
-                selectedEducations.push(educationValue); // Corrected the array name
-                updateSelectedEducations(); // Corrected the function name
-            }
-        });
+      
 
-        function updateSelectedSkills() {
-            const hiddenInput = document.createElement('input');
-            hiddenInput.type = 'hidden';
-            hiddenInput.name = 'selectedSkills';
-            hiddenInput.value = JSON.stringify(selectedSkills);
+        
 
-            // Remove existing hidden input to avoid duplicates
-            const existingHiddenInput = jobForm.querySelector('input[name="selectedSkills"]');
-            if (existingHiddenInput) {
-                jobForm.removeChild(existingHiddenInput);
-            }
-
-            jobForm.appendChild(hiddenInput);
-
-            // Update the displayed selected skills
-            selectedSkillsList.innerHTML = selectedSkills.map(skill => `<li>${skill}</li>`).join('');
-        }
-
-        function updateSelectedEducations() {
-            const hiddenInput = document.createElement('input');
-            hiddenInput.type = 'hidden';
-            hiddenInput.name = 'selectedEducations'; // Corrected the name
-            hiddenInput.value = JSON.stringify(selectedEducations);
-
-            // Remove existing hidden input to avoid duplicates
-            const existingHiddenInput = jobForm.querySelector('input[name="selectedEducations"]'); // Corrected the name
-            if (existingHiddenInput) {
-                jobForm.removeChild(existingHiddenInput);
-            }
-
-            jobForm.appendChild(hiddenInput);
-
-            // Update the displayed selected education
-            educationList.innerHTML = selectedEducations.map(edu => `<li>${edu}</li>`).join('');
-        }
+        
 
         const cancelBtn = document.getElementById('cancelBtn');
         cancelBtn.addEventListener('click', function () {
             jobForm.reset();
             selectedSkills.length = 0;
-            selectedEducations.length = 0; // Corrected the array name
+           
             updateSelectedSkills();
-            updateSelectedEducations(); 
+          
         });
     });
 </script>

@@ -5,25 +5,14 @@ const jobSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  jobType: {
-    type: String,
-    required: true
-  },
-  Email: {
-    type: String,
-    required: true
-  },
-  vecancy: {
-    type: String,
-    required: true
-  },
+ 
   location: {
     type: String,
     required: true
   },
-  experience: {
-    type: String,
-    required: true
+  salary:{
+   type:String,
+   required:true
   },
   workingday: {
     type: String,
@@ -34,25 +23,34 @@ const jobSchema = new mongoose.Schema({
     required: true
   },
   Skills: {
-    type: String,
-    required: true
-  },
-  education: {
-    type: String,
-    required: true
-  },
+    type: [String], 
+    default: []
+},
+ 
   description: {
     type: String,
     required: true
   },
-  selectedSkills: {
-    type: [String],
-    required: true
+  companyname1: {
+    type: String,
+ 
   },
-  selectedEducations: {
-    type: [String],
-    required: true
-  }
+
+  companydescription1: {
+    type: String,
+
+  },
+
+  companyname2: {
+    type: String,
+
+  },
+
+  companydescription2: {
+    type: String,
+    
+  },
+  
 });
 
 const Job = mongoose.model('Job', jobSchema);
