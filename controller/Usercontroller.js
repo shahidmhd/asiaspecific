@@ -77,6 +77,26 @@ const GetAppliedJobs = async(req,res)=>{
         console.log(error);
     }
 }
+const deleteAppliedJob = async (req, res) => {
+    try {
+        // Assuming you have a parameter named jobId in your request
+    
+        const { id } = req.params
+console.log(id);
+        // Use findOneAndDelete to find and delete the job application
+        const deletedUser = await User.findOneAndDelete({ _id: id });
+
+        if (!deletedUser) {
+            // If no matching job application is found
+            return res.status(404).send('Job application not found.');
+        }
+
+         res.redirect('/admin/appliedjob')
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Internal Server Error');
+    }
+};
 
 const Getsubscribers = async(req,res)=>{
     try {
@@ -172,5 +192,6 @@ module.exports = {
     GetAppliedJobs,
     RenderNews,
     RenderContact,
-    Getsubscribers
+    Getsubscribers,
+    deleteAppliedJob
 };

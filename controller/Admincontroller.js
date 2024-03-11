@@ -4,13 +4,24 @@ const Admin = require("../models/adminmodel");
 const Getlogin =async (req,res)=>{
     // Check if the admin is already logged in
     if (req.session.adminLoggedIn) {
-        return res.redirect('/admin'); 
+        console.log("Already logged in");
+         res.redirect('/admin');
+    } else {
+        // Admin is not logged in, render the login page
+        res.render('admin/Login', { layout: "adminlayout", adminlogin: true, loginError: null });
     }
-
     // Admin is not logged in, render the login page
-    res.render('admin/Login',{ layout: "adminlayout",adminlogin: true,loginError:null})
+    
 }
 
+const renderdashboard=async(req,res)=>{
+    if (req.session.adminLoggedIn) {
+        res.render('admin/dashboard',{ layout: "adminlayout",})
+    } else {
+        // Admin is not logged in, render the login page
+        res.redirect('/admin/login');
+    }
+}
 const login = async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -56,5 +67,6 @@ const logout = (req, res) => {
 module.exports = {
     login,
     Getlogin,
-    logout
+    logout,
+    renderdashboard
 };

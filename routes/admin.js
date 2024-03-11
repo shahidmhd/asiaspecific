@@ -17,19 +17,17 @@
 // module.exports=router
 
 const express=require('express');
-const { login, Getlogin, logout } = require('../controller/Admincontroller');
+const { login, Getlogin, logout, renderdashboard } = require('../controller/Admincontroller');
 const { Renderservice, Addservice, Renderservicelist, RenderCountries, Postcountries, DeleteCountry, DeleteService, EditService,  } = require('../controller/Servicecontroller');
 const multer = require('../utils/multer');
 const { Addjob, Addjobdata, DeleteJob, EditJob } = require('../controller/Jobcontroller');
 const { AddNewsAndUpdates, RenderNewandUpdates, DeleteNewsandUpdates, EditNewsandUpdates } = require('../controller/News&Updates');
 const { GetContactForm, Deletecontact, Deletesubscriber } = require('../controller/Contactcontroller');
-const { GetAppliedJobs, Getsubscribers } = require('../controller/Usercontroller');
+const { GetAppliedJobs, Getsubscribers, deleteAppliedJob } = require('../controller/Usercontroller');
 const router = express.Router();
 
 
-router.get("/",(req,res)=>{
-    res.render('admin/dashboard',{ layout: "adminlayout"})
-});
+router.get("/",renderdashboard);
 
 router.get("/login",Getlogin);
 
@@ -69,5 +67,6 @@ router.get('/deletesubscribe/:id',Deletesubscriber);
 //Applied Job Route
 router.get('/appliedjob',GetAppliedJobs);
 router.get('/subscriptionlist',Getsubscribers);
+router.get('/appliedJobs/:id',deleteAppliedJob)
 
 module.exports=router
